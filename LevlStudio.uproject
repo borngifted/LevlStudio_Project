@@ -1,0 +1,10 @@
+{
+  "FileVersion": 3,
+  "EngineAssociation": "5.6",
+  "Category": "",
+  "Description": "LevlStudio project",
+  "Modules": [
+    { "Name": "LevlStudio", "Type": "Runtime", "LoadingPhase": "Default" }
+  ],
+  "TargetPlatforms": [ "Mac" ]
+}

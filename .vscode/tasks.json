@@ -36,7 +36,7 @@
       "type": "shell",
       "command": "python3",
       "args": [
-        "levl_ue_to_comfy_server.py",
+        "levl_ue_to_comfy_oneclick_server.py",
         "--ue_bridge", "./UnrealBridge",
         "--comfy_host", "127.0.0.1",
         "--comfy_port", "8188"

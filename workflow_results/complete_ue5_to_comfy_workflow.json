@@ -1,0 +1,386 @@
+{
+  "last_node_id": 26,
+  "last_link_id": 46,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "Load Image (Batch)",
+      "pos": [ -780, -80 ],
+      "size": [ 300, 120 ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        { "name": "IMAGE", "type": "IMAGE", "links": [1] }
+      ],
+      "properties": {
+        "Node name for S&R": "Load Image (Batch)"
+      },
+      "widgets_values": [
+        "/Users/workofficial/UnrealExports/Seq01",
+        "frame_#####.png",
+        false
+      ]
+    },
+
+    {
+      "id": 2,
+      "type": "DepthAnythingV2_Preprocessor",
+      "pos": [ -430, -240 ],
+      "size": [ 280, 120 ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        { "name": "image", "type": "IMAGE", "link": 1 }
+      ],
+      "outputs": [
+        { "name": "image", "type": "IMAGE", "links": [2] }
+      ],
+      "properties": { "Node name for S&R": "DepthAnythingV2_Preprocessor" },
+      "widgets_values": {
+        "model": "depth_anything_v2_vits",
+        "resolution": 1024,
+        "max_depth": 20.0,
+        "invert_depth": false
+      }
+    },
+
+    {
+      "id": 3,
+      "type": "DWOpenPose_Preprocessor",
+      "pos": [ -430, 0 ],
+      "size": [ 280, 120 ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        { "name": "image", "type": "IMAGE", "link": 1 }
+      ],
+      "outputs": [
+        { "name": "image", "type": "IMAGE", "links": [3] }
+      ],
+      "properties": { "Node name for S&R": "DWOpenPose_Preprocessor" },
+      "widgets_values": {
+        "hand_and_face": true,
+        "resolution": 1024
+      }
+    },
+
+    {
+      "id": 4,
+      "type": "CannyEdgePreprocessor",
+      "pos": [ -430, 240 ],
+      "size": [ 280, 120 ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        { "name": "image", "type": "IMAGE", "link": 1 }
+      ],
+      "outputs": [
+        { "name": "image", "type": "IMAGE", "links": [4] }
+      ],
+      "properties": { "Node name for S&R": "CannyEdgePreprocessor" },
+      "widgets_values": {
+        "low_threshold": 100,
+        "high_threshold": 200,
+        "aperture_size": 3,
+        "L2gradient": false
+      }
+    },
+
+    {
+      "id": 5,
+      "type": "ControlNetLoader",
+      "pos": [ -80, -250 ],
+      "size": [ 260, 70 ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        { "name": "CONTROL_NET", "type": "CONTROL_NET", "links": [5] }
+      ],
+      "properties": { "Node name for S&R": "ControlNetLoader" },
+      "widgets_values": [
+        "depth_anything_v2_sdxl.safetensors"
+      ]
+    },
+
+    {
+      "id": 6,
+      "type": "ControlNetLoader",
+      "pos": [ -80, -10 ],
+      "size": [ 260, 70 ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        { "name": "CONTROL_NET", "type": "CONTROL_NET", "links": [6] }
+      ],
+      "properties": { "Node name for S&R": "ControlNetLoader" },
+      "widgets_values": [
+        "dw_openpose_sdxl.safetensors"
+      ]
+    },
+
+    {
+      "id": 7,
+      "type": "ControlNetLoader",
+      "pos": [ -80, 230 ],
+      "size": [ 260, 70 ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "outputs": [
+        { "name": "CONTROL_NET", "type": "CONTROL_NET", "links": [7] }
+      ],
+      "properties": { "Node name for S&R": "ControlNetLoader" },
+      "widgets_values": [
+        "canny_sdxl.safetensors"
+      ]
+    },
+
+    {
+      "id": 8,
+      "type": "CLIP Text Encode",
+      "pos": [ 260, -340 ],
+      "size": [ 320, 120 ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        { "name": "clip", "type": "CLIP", "link": 13 }
+      ],
+      "outputs": [
+        { "name": "CONDITIONING", "type": "CONDITIONING", "links": [8] }
+      ],
+      "properties": { "Node name for S&R": "CLIP Text Encode" },
+      "widgets_values": [
+        "cinematic, detailed, stylized, consistent character details, sharp contours, coherent shading"
+      ]
+    },
+
+    {
+      "id": 9,
+      "type": "CLIP Text Encode",
+      "pos": [ 260, -160 ],
+      "size": [ 320, 120 ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        { "name": "clip", "type": "CLIP", "link": 14 }
+      ],
+      "outputs": [
+        { "name": "CONDITIONING", "type": "CONDITIONING", "links": [9] }
+      ],
+      "properties": { "Node name for S&R": "CLIP Text Encode" },
+      "widgets_values": [
+        "blurry, extra limbs, distortions, asymmetry, flicker, artifacts, oversharpen"
+      ]
+    },
+
+    {
+      "id": 10,
+      "type": "ApplyControlNet",
+      "pos": [ 630, -340 ],
+      "size": [ 300, 120 ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        { "name": "conditioning", "type": "CONDITIONING", "link": 8 },
+        { "name": "control_net", "type": "CONTROL_NET", "link": 5 },
+        { "name": "image", "type": "IMAGE", "link": 2 }
+      ],
+      "outputs": [
+        { "name": "CONDITIONING", "type": "CONDITIONING", "links": [10] }
+      ],
+      "properties": { "Node name for S&R": "ApplyControlNet" },
+      "widgets_values": {
+        "start_percent": 0.0,
+        "end_percent": 1.0,
+        "strength": 0.70
+      }
+    },
+
+    {
+      "id": 11,
+      "type": "ApplyControlNet",
+      "pos": [ 960, -340 ],
+      "size": [ 300, 120 ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        { "name": "conditioning", "type": "CONDITIONING", "link": 10 },
+        { "name": "control_net", "type": "CONTROL_NET", "link": 6 },
+        { "name": "image", "type": "IMAGE", "link": 3 }
+      ],
+      "outputs": [
+        { "name": "CONDITIONING", "type": "CONDITIONING", "links": [11] }
+      ],
+      "properties": { "Node name for S&R": "ApplyControlNet" },
+      "widgets_values": {
+        "start_percent": 0.0,
+        "end_percent": 1.0,
+        "strength": 0.60
+      }
+    },
+
+    {
+      "id": 12,
+      "type": "ApplyControlNet",
+      "pos": [ 1290, -340 ],
+      "size": [ 300, 120 ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        { "name": "conditioning", "type": "CONDITIONING", "link": 11 },
+        { "name": "control_net", "type": "CONTROL_NET", "link": 7 },
+        { "name": "image", "type": "IMAGE", "link": 4 }
+      ],
+      "outputs": [
+        { "name": "CONDITIONING", "type": "CONDITIONING", "links": [12] }
+      ],
+      "properties": { "Node name for S&R": "ApplyControlNet" },
+      "widgets_values": {
+        "start_percent": 0.0,
+        "end_percent": 0.80,
+        "strength": 0.45
+      }
+    },
+
+    {
+      "id": 13,
+      "type": "CheckpointLoaderSimple",
+      "pos": [ 260, -540 ],
+      "size": [ 320, 120 ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "outputs": [
+        { "name": "MODEL", "type": "MODEL", "links": [15] },
+        { "name": "CLIP", "type": "CLIP", "links": [13,14] },
+        { "name": "VAE", "type": "VAE", "links": [16] }
+      ],
+      "properties": { "Node name for S&R": "CheckpointLoaderSimple" },
+      "widgets_values": [
+        "WAN-FUN.safetensors",
+        "Default"
+      ]
+    },
+
+    {
+      "id": 14,
+      "type": "VAE Encode",
+      "pos": [ -80, -540 ],
+      "size": [ 240, 120 ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        { "name": "pixels", "type": "IMAGE", "link": 1 },
+        { "name": "vae", "type": "VAE", "link": 16 }
+      ],
+      "outputs": [
+        { "name": "LATENT", "type": "LATENT", "links": [17] }
+      ],
+      "properties": { "Node name for S&R": "VAE Encode" }
+    },
+
+    {
+      "id": 15,
+      "type": "KSampler",
+      "pos": [ 1640, -200 ],
+      "size": [ 340, 210 ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        { "name": "model", "type": "MODEL", "link": 15 },
+        { "name": "positive", "type": "CONDITIONING", "link": 12 },
+        { "name": "negative", "type": "CONDITIONING", "link": 9 },
+        { "name": "latent_image", "type": "LATENT", "link": 17 }
+      ],
+      "outputs": [
+        { "name": "LATENT", "type": "LATENT", "links": [18] }
+      ],
+      "properties": { "Node name for S&R": "KSampler" },
+      "widgets_values": [
+        123456789,
+        "dpmpp_2m_karras",
+        22,
+        5.5,
+        0.45,
+        false
+      ]
+    },
+
+    {
+      "id": 16,
+      "type": "VAE Decode",
+      "pos": [ 2010, -200 ],
+      "size": [ 240, 120 ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        { "name": "samples", "type": "LATENT", "link": 18 },
+        { "name": "vae", "type": "VAE", "link": 16 }
+      ],
+      "outputs": [
+        { "name": "IMAGE", "type": "IMAGE", "links": [19] }
+      ],
+      "properties": { "Node name for S&R": "VAE Decode" }
+    },
+
+    {
+      "id": 17,
+      "type": "Save Image",
+      "pos": [ 2290, -200 ],
+      "size": [ 240, 140 ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        { "name": "images", "type": "IMAGE", "link": 19 }
+      ],
+      "properties": { "Node name for S&R": "Save Image" },
+      "widgets_values": [
+        "ue_stylized_seq01"
+      ]
+    }
+  ],
+  "links": [
+    [1, 1, 0, 2, 0, "IMAGE"],
+    [1, 1, 0, 3, 0, "IMAGE"],
+    [1, 1, 0, 4, 0, "IMAGE"],
+    [1, 1, 0, 14, 0, "IMAGE"],
+    [2, 2, 0, 10, 2, "IMAGE"],
+    [3, 3, 0, 11, 2, "IMAGE"],
+    [4, 4, 0, 12, 2, "IMAGE"],
+    [5, 5, 0, 10, 1, "CONTROL_NET"],
+    [6, 6, 0, 11, 1, "CONTROL_NET"],
+    [7, 7, 0, 12, 1, "CONTROL_NET"],
+    [8, 8, 0, 10, 0, "CONDITIONING"],
+    [9, 9, 0, 15, 2, "CONDITIONING"],
+    [10, 10, 0, 11, 0, "CONDITIONING"],
+    [11, 11, 0, 12, 0, "CONDITIONING"],
+    [12, 12, 0, 15, 1, "CONDITIONING"],
+    [13, 13, 1, 8, 0, "CLIP"],
+    [14, 13, 1, 9, 0, "CLIP"],
+    [15, 13, 0, 15, 0, "MODEL"],
+    [16, 13, 2, 14, 1, "VAE"],
+    [16, 13, 2, 16, 1, "VAE"],
+    [17, 14, 0, 15, 3, "LATENT"],
+    [18, 15, 0, 16, 0, "LATENT"],
+    [19, 16, 0, 17, 0, "IMAGE"]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 1
+}

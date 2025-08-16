@@ -1,0 +1,93 @@
+{
+  "void": {
+    "version": "1.0.0",
+    "project": {
+      "name": "LevlStudio Pipeline",
+      "description": "AI-powered UE5 to ComfyUI rendering pipeline",
+      "type": "creative-pipeline"
+    },
+    "ai": {
+      "context": {
+        "includeRules": true,
+        "includeCommands": true,
+        "maxContextLength": 8000
+      },
+      "behavior": {
+        "autoSuggestCommands": true,
+        "explainSteps": true,
+        "useEmojis": true,
+        "confirmDestructive": true
+      }
+    },
+    "workspace": {
+      "defaultTerminal": "bash",
+      "workingDirectory": "${workspaceRoot}",
+      "environmentVariables": {
+        "UE_BRIDGE": "./UnrealBridge",
+        "COMFY_HOST": "127.0.0.1",
+        "COMFY_PORT": "8188",
+        "MCP_HOST": "127.0.0.1",
+        "MCP_PORT": "8765"
+      }
+    },
+    "fileWatching": {
+      "watchPaths": [
+        "./exports/**/*.mp4",
+        "./outputs/**/*.mp4", 
+        "./UnrealBridge/outbox/*.json"
+      ],
+      "notifications": {
+        "newRender": "New render completed in exports/",
+        "styledOutput": "Styled video ready in outputs/",
+        "ueComplete": "Unreal Engine job finished"
+      }
+    },
+    "quickActions": [
+      {
+        "label": "🚀 Quick Test Render",
+        "description": "Fast test with Nimble + festive style",
+        "command": "ue:oneclick",
+        "args": {
+          "ueLevel": "/Game/Levl/Maps/Empty",
+          "blueprint": "/Game/The13thNight/Blueprints/BP_Nimble",
+          "shotName": "QuickTest",
+          "styleImage": "refs/style_festive_night.png",
+          "resolution": "1280x720",
+          "fps": "24"
+        }
+      },
+      {
+        "label": "📊 System Check",
+        "description": "Check all services status",
+        "command": "mcp:status"
+      },
+      {
+        "label": "🧹 Clean & Reset",
+        "description": "Clean queue and start fresh",
+        "command": "pipeline:clean"
+      }
+    ],
+    "presets": {
+      "characters": {
+        "nimble": "/Game/The13thNight/Blueprints/BP_Nimble",
+        "pip": "/Game/The13thNight/Blueprints/BP_Pip", 
+        "jingles": "/Game/The13thNight/Blueprints/BP_Jingles",
+        "santa": "/Game/The13thNight/Blueprints/BP_Santa",
+        "jax": "/Game/The13thNight/Blueprints/BP_Jax"
+      },
+      "styles": {
+        "festive": "refs/style_festive_night.png",
+        "magical": "refs/style_magical_glow.png",
+        "ice": "refs/style_ice_crystal.png",
+        "dark": "refs/style_dark_forest.png",
+        "candy": "refs/style_candy_cane.png"
+      },
+      "resolutions": {
+        "test": "1280x720",
+        "hd": "1920x1080", 
+        "2k": "2560x1440",
+        "square": "1024x1024"
+      }
+    }
+  }
+}

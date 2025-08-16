@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "title": "Working Video Test",
+    "description": "Simple workflow that loads a video and saves it - tests basic functionality",
+    "version": "1.0",
+    "dynamic_overrides": {
+      "video_path": "test_video.mp4",
+      "output_dir": "outputs"
+    }
+  },
+  "1": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "video": "{video_path}",
+      "frame_rate": 0,
+      "skip_first_frames": 0,
+      "select_every_nth": 1
+    },
+    "_meta": {
+      "title": "Load Input Video"
+    }
+  },
+  "2": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "images": ["1", 0],
+      "filename_prefix": "processed_",
+      "fps": 24,
+      "lossless": false,
+      "quality": 85,
+      "method": "lanczos"
+    },
+    "_meta": {
+      "title": "Save Output Video"
+    }
+  }
+}

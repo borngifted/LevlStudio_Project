@@ -1,8 +1,10 @@
-# LevlStudio Bridge Watcher for Unreal Engine
-# Place this in: YourUEProject/Content/Python/LevlBridgeWatcherOneClick.py
-# Adds an action to spawn a BP, create a LevelSequence, and render via MRQ
-
-import unreal, json, os, glob, traceback
+#!/usr/bin/env python3
+"""
+LevlStudio One-Click UE Python Watcher
+Handles oneclick_build_and_render action using Movie Render Queue
+Place this in: YourUEProject/Content/Python/LevlBridgeWatcherOneClick.py
+"""
+import unreal, json, os, glob, traceback, time
 
 BRIDGE_ROOT = unreal.Paths.project_dir() + "LevlStudioBridge/"
 INBOX = BRIDGE_ROOT + "inbox/"
@@ -43,99 +45,167 @@ def _load_asset(path):
 
 def oneclick_build_and_render(cmd):
     """
-    Spawn a Blueprint actor, create a LevelSequence with camera, render via Movie Render Queue
+    Main action: spawn Blueprint, create Level Sequence, add camera, render with MRQ
     """
     p = cmd["payload"]
-    level = p.get("level_path","/Game/Levl/Maps/Empty")
+    level = p.get("level_path", "/Game/Levl/Maps/Empty")
     bp_path = p["bp_path"]
-    out_path = p.get("output_movie_path","{proj}/Saved/Movies/oneclick.mp4".format(proj=unreal.Paths.project_dir().rstrip('/')))
-    res = p.get("resolution","1280x720")
-    fps = int(p.get("fps",24))
-    loc = _parse_vec(p.get("spawn_location","0,0,300"))
-    rot = _parse_rot(p.get("spawn_rotation","0,0,0"))
-    seq_name = p.get("sequence_name","Seq_OneClick")
+    out_path = p.get("output_movie_path", f"{unreal.Paths.project_dir().rstrip('/')}/Saved/Movies/oneclick.mp4")
+    res = p.get("resolution", "1280x720")
+    fps = int(p.get("fps", 24))
+    loc = _parse_vec(p.get("spawn_location", "0,0,300"))
+    rot = _parse_rot(p.get("spawn_rotation", "0,0,0"))
+    seq_name = p.get("sequence_name", "Seq_OneClick")
 
-    # Load level
-    unreal.EditorLevelLibrary.load_level(level)
+    print(f"🎬 Starting One-Click Render: {bp_path} in {level}")
 
-    # Spawn actor from BP
+    # Step 1: Load level
+    print(f"📁 Loading level: {level}")
+    if not unreal.EditorLevelLibrary.load_level(level):
+        raise RuntimeError(f"Failed to load level: {level}")
+
+    # Step 2: Spawn actor from Blueprint
+    print(f"🎭 Spawning Blueprint: {bp_path}")
     bp = _load_asset(bp_path)
     if not bp:
         raise RuntimeError(f"Blueprint not found: {bp_path}")
+    
     actor = unreal.EditorLevelLibrary.spawn_actor_from_object(bp, loc, rot)
+    if not actor:
+        raise RuntimeError(f"Failed to spawn actor from: {bp_path}")
 
-    # Create a LevelSequence
+    # Step 3: Create Level Sequence
+    print(f"🎞️ Creating Level Sequence: {seq_name}")
     seq_factory = unreal.LevelSequenceFactoryNew()
     asset_tools = unreal.AssetToolsHelpers.get_asset_tools()
-    package_path = "/Game/Levl/Sequences"
+    package_path = "/Game/LevlStudio/Sequences"
+    
+    # Ensure directory exists
     if not unreal.EditorAssetLibrary.does_directory_exist(package_path):
         unreal.EditorAssetLibrary.make_directory(package_path)
-    seq = asset_tools.create_asset(seq_name, package_path, unreal.LevelSequence, seq_factory)
+    
+    # Create unique sequence name to avoid conflicts
+    seq_name_unique = f"{seq_name}_{int(time.time())}"
+    seq = asset_tools.create_asset(seq_name_unique, package_path, unreal.LevelSequence, seq_factory)
+    
+    if not seq:
+        raise RuntimeError(f"Failed to create Level Sequence: {seq_name_unique}")
 
-    # Add a CineCameraActor and set transform
+    # Step 4: Add CineCameraActor
+    print("📹 Adding Cine Camera")
+    camera_loc = unreal.Vector(loc.x, loc.y - 500, loc.z + 200)  # Position camera relative to spawned actor
+    camera_rot = unreal.Rotator(-10, 0, 0)  # Slight downward angle
     cine = unreal.EditorLevelLibrary.spawn_actor_from_class(
         unreal.CineCameraActor, 
-        unreal.Vector(0,-500,300), 
-        unreal.Rotator(-10,0,0)
+        camera_loc, 
+        camera_rot
     )
     
-    # Bind actors to sequence
+    if not cine:
+        raise RuntimeError("Failed to create Cine Camera")
+
+    # Step 5: Bind actors to sequence
+    print("🔗 Binding actors to sequence")
     seq_bp_binding = seq.add_possessable(actor)
     seq_cam_binding = seq.add_possessable(cine)
 
-    # Add a Camera Cut Track
+    # Step 6: Add Camera Cut Track
+    print("✂️ Adding camera cut track")
     cut_track = seq.add_master_track(unreal.MovieSceneCameraCutTrack)
     cut_section = cut_track.add_section()
+    
+    # Set sequence duration (4 seconds)
+    duration_frames = fps * 4
     cut_section.set_start_frame_bounded(0)
-    cut_section.set_end_frame_bounded(fps*4)  # ~4 seconds
+    cut_section.set_end_frame_bounded(duration_frames)
     cut_section.set_camera_binding_id(seq_cam_binding.get_id())
 
-    # Configure MRQ
+    # Step 7: Configure Movie Render Queue
+    print("🎬 Configuring Movie Render Queue")
     mrq_subsys = unreal.get_editor_subsystem(unreal.MoviePipelineQueueSubsystem)
     queue = mrq_subsys.get_queue()
+    
+    # Clear existing jobs
+    queue.delete_all_jobs()
+    
+    # Create new job
     job = queue.allocate_new_job(unreal.MoviePipelineExecutorJob)
     job.map = unreal.SoftObjectPath(level)
-    job.job_name = "OneClickJob"
+    job.job_name = f"OneClickJob_{int(time.time())}"
     job.sequence = unreal.SoftObjectPath(seq.get_path_name())
 
-    # Set output and settings
+    # Configure job settings
     settings = job.get_configuration()
     
-    # Output setting
+    # Output settings
     out_setting = settings.find_or_add_setting_by_class(unreal.MoviePipelineOutputSetting)
     out_dir = os.path.dirname(out_path)
     out_file_base = os.path.splitext(os.path.basename(out_path))[0]
     out_setting.output_directory = unreal.DirectoryPath(out_dir)
     out_setting.file_name_format = out_file_base
     
-    # Resolution setting
+    # Resolution settings
     res_w, res_h = [int(v) for v in res.split('x')]
     res_setting = settings.find_or_add_setting_by_class(unreal.MoviePipelineResolutionSetting)
     res_setting.output_resolution = unreal.IntPoint(res_w, res_h)
     
-    # FPS setting
+    # Frame rate settings
     gen_setting = settings.find_or_add_setting_by_class(unreal.MoviePipelineGeneralSetting)
-    gen_setting.output_frame_rate = unreal.FrameRate(fps,1)
+    gen_setting.output_frame_rate = unreal.FrameRate(fps, 1)
     
-    # Video codec (PNG sequence as fallback)
+    # Output format - PNG sequence for reliability
     img_setting = settings.find_or_add_setting_by_class(unreal.MoviePipelineImageSequenceOutput_PNG)
+    
+    # Anti-aliasing for quality
+    aa_setting = settings.find_or_add_setting_by_class(unreal.MoviePipelineAntiAliasingSetting)
+    aa_setting.spatial_sample_count = 4
+    aa_setting.temporal_sample_count = 4
 
-    # Execute (local)
+    # Step 8: Execute render
+    print("🚀 Starting render execution...")
     executor = unreal.MoviePipelinePIEExecutor()
+    
+    # Start rendering
     mrq_subsys.render_queue_with_executor(executor, queue)
 
-    # Block until finished
+    # Step 9: Wait for completion
+    print("⏳ Waiting for render to complete...")
+    max_wait_time = 300  # 5 minutes max
+    start_time = time.time()
+    
     while executor.is_rendering():
-        unreal.SystemLibrary.sleep(unreal.EditorLevelLibrary.get_editor_world(), 0.25)
+        if time.time() - start_time > max_wait_time:
+            raise RuntimeError("Render timed out after 5 minutes")
+        
+        # Sleep and update progress
+        unreal.SystemLibrary.delay(unreal.EditorLevelLibrary.get_editor_world(), 1.0)
+        elapsed = int(time.time() - start_time)
+        print(f"⏳ Rendering... {elapsed}s elapsed")
 
-    # Write result
-    movie_guess = out_path if out_path.lower().endswith(".mp4") else os.path.join(out_dir, out_file_base + ".png")
-    return {
-        "movie_path": movie_guess, 
-        "sequence": seq.get_path_name(), 
-        "spawned": actor.get_name(), 
-        "camera": cine.get_name()
+    print("✅ Render completed!")
+
+    # Step 10: Find output files
+    # For PNG sequence, we'll return the directory path
+    output_dir = out_dir
+    png_pattern = f"{out_file_base}.*.png"
+    
+    # Check if we have PNG files
+    png_files = glob.glob(os.path.join(output_dir, png_pattern))
+    
+    result_data = {
+        "movie_path": out_path if out_path.endswith('.mp4') else output_dir,
+        "output_format": "mp4" if out_path.endswith('.mp4') else "png_sequence",
+        "png_files": len(png_files) if png_files else 0,
+        "sequence": seq.get_path_name(),
+        "spawned_actor": actor.get_name(),
+        "camera": cine.get_name(),
+        "resolution": res,
+        "fps": fps,
+        "duration_frames": duration_frames
     }
+    
+    print(f"🎉 One-Click render complete: {result_data}")
+    return result_data
 
 # Action mappings
 ACTIONS = {

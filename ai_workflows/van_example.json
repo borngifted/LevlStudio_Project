@@ -1,0 +1,12 @@
+{
+  "name": "delivery_van",
+  "prompt": "White delivery van, side view, clean background, suitable for 3D modeling. Modern commercial vehicle with sliding door, simple design, well-lit, isometric perspective.",
+  "steps": [
+    "Generate concept image with AI",
+    "Clean up in Photoshop/GIMP",
+    "Convert to 3D with Hunyuan/Tripo3D",
+    "Clean mesh in Blender",
+    "Retopology with Trio Studio",
+    "Export FBX for Unreal Engine"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "van_interior_seats",
+  "prompt": "Van interior seats, dashboard, and door panels, isometric view, clean background, separated components for 3D modeling",
+  "parts": [
+    "seats",
+    "dashboard",
+    "door_panels",
+    "steering_wheel"
+  ]
+}

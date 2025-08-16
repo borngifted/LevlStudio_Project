@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "title": "Simple Video Processing Test",
+    "description": "Basic workflow to test video loading without custom models",
+    "version": "1.0",
+    "dynamic_overrides": {
+      "video_path": "",
+      "output_dir": "outputs"
+    }
+  },
+  "1": {
+    "class_type": "LoadImageBatch",
+    "inputs": {
+      "image": "{video_path}",
+      "mode": "incremental_image",
+      "index": 0,
+      "label": "batch_001"
+    },
+    "_meta": {
+      "title": "Load Video Frames"
+    }
+  },
+  "2": {
+    "class_type": "VHS_VideoCombine",
+    "inputs": {
+      "images": ["1", 0],
+      "frame_rate": 24,
+      "loop_count": 0,
+      "filename_prefix": "output_",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": true,
+      "pingpong": false,
+      "save_output": true,
+      "videopreview": {
+        "hidden": false,
+        "prompt": [
+          "1",
+          0
+        ],
+        "extra_pnginfo": {
+          "SourceType": "raw",
+          "Title": "ComfyUI"
+        }
+      }
+    },
+    "_meta": {
+      "title": "Combine to Video"
+    }
+  }
+}

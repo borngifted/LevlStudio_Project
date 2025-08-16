@@ -1,0 +1,73 @@
+{
+  "title": "LevlStudio Blender Integration Options",
+  "blender_mcp_server": {
+    "status": "detected_on_port_9876",
+    "connection": "tcp_responsive_but_custom_protocol",
+    "recommendation": "file_based_bridge_created"
+  },
+  "integration_methods": [
+    {
+      "method": "1. File-Based Bridge (RECOMMENDED)",
+      "description": "Drop files, run script, get results",
+      "setup": "Already created in blender_bridge/ directory",
+      "usage": [
+        "1. Drop GLB files in blender_bridge/input/",
+        "2. Run: blender --background --python blender_bridge/scripts/process_ai_models.py",
+        "3. Get FBX files from blender_bridge/output/"
+      ],
+      "pros": [
+        "Simple",
+        "Reliable",
+        "No protocol issues"
+      ],
+      "status": "\u2705 READY"
+    },
+    {
+      "method": "2. Direct Python Scripts",
+      "description": "Use blender_automation.py directly",
+      "usage": [
+        "blender --background --python blender_automation.py -- process input.glb output.fbx"
+      ],
+      "pros": [
+        "Direct control",
+        "Custom parameters"
+      ],
+      "status": "\u2705 READY"
+    },
+    {
+      "method": "3. MCP Server Integration",
+      "description": "Direct connection to Blender MCP on port 9876",
+      "setup": "Custom protocol needs discovery",
+      "usage": [
+        "Need to determine correct command format"
+      ],
+      "pros": [
+        "Real-time",
+        "Programmatic control"
+      ],
+      "status": "\u26a0\ufe0f NEEDS PROTOCOL DISCOVERY"
+    },
+    {
+      "method": "4. AI-to-3D Complete Pipeline",
+      "description": "Integrated workflow with all tools",
+      "usage": [
+        "python3 complete_ai_to_3d_workflow.py"
+      ],
+      "pros": [
+        "End-to-end automation",
+        "All steps included"
+      ],
+      "status": "\u2705 READY"
+    }
+  ],
+  "quick_start": {
+    "for_van_example": [
+      "1. Run: python3 complete_ai_to_3d_workflow.py",
+      "2. Get concept images from ai_generated_assets/concept_images/",
+      "3. Upload to Tripo3D/Meshy to get GLB files",
+      "4. Use file-based bridge or direct scripts to process in Blender",
+      "5. Import FBX to UE5 and animate",
+      "6. Apply AI style transfer with ComfyUI"
+    ]
+  }
+}

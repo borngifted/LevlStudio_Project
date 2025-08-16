@@ -1,0 +1,180 @@
+{
+  "$schema": "https://voideditor.com/schema/commands.json",
+  "version": "1.0.0",
+  "commands": [
+    {
+      "id": "mcp:start",
+      "label": "🚀 Start LevlStudio MCP Server",
+      "description": "Start the MCP server that bridges Unreal Engine and ComfyUI",
+      "shell": "source .venv/bin/activate && python3 levl_ue_to_comfy_oneclick_server.py --ue_bridge ./UnrealBridge --comfy_host 127.0.0.1 --comfy_port 8188",
+      "cwd": "${workspaceRoot}",
+      "background": true,
+      "category": "pipeline"
+    },
+    {
+      "id": "mcp:status",
+      "label": "📊 Check Pipeline Status",
+      "description": "Check status of MCP server, UE bridge, and ComfyUI",
+      "shell": "source .venv/bin/activate && python3 ue_to_comfy_oneclick.py --status_only --level /Game/Test --bp_path /Game/Test --movie_out test --style_img test",
+      "cwd": "${workspaceRoot}",
+      "category": "pipeline"
+    },
+    {
+      "id": "comfy:start",
+      "label": "🎨 Start ComfyUI Server",
+      "description": "Start ComfyUI with all custom nodes",
+      "shell": "cd /Users/workofficial/ComfyUI/ComfyUI && source venv/bin/activate && python main.py --listen 127.0.0.1 --port 8188",
+      "cwd": "/Users/workofficial/ComfyUI/ComfyUI",
+      "background": true,
+      "category": "services"
+    },
+    {
+      "id": "comfy:direct",
+      "label": "🎬 Run ComfyUI Workflow (Direct)",
+      "description": "Submit video directly to ComfyUI with style transfer",
+      "shell": "source .venv/bin/activate && python3 comfy_bridge_client.py --host 127.0.0.1 --port 8188 --workflow comfy_workflows/wanfn_depth_pose_canny_template.json --video_in ${input:videoPath} --style_img ${input:styleImage} --out_dir outputs",
+      "cwd": "${workspaceRoot}",
+      "category": "render",
+      "inputs": {
+        "videoPath": {
+          "type": "file",
+          "description": "Input video file",
+          "filter": "*.mp4;*.mov;*.avi"
+        },
+        "styleImage": {
+          "type": "file", 
+          "description": "Style reference image",
+          "filter": "*.png;*.jpg;*.jpeg"
+        }
+      }
+    },
+    {
+      "id": "ue:oneclick",
+      "label": "🎭 UE → ComfyUI One-Click Pipeline",
+      "description": "Complete pipeline: spawn Blueprint in UE, render, then apply AI style",
+      "shell": "source .venv/bin/activate && python3 ue_to_comfy_oneclick.py --host 127.0.0.1 --port 8765 --level ${input:ueLevel} --bp_path ${input:blueprint} --movie_out exports/oneclick_${input:shotName}.mp4 --style_img ${input:styleImage} --location ${input:location} --resolution ${input:resolution} --fps ${input:fps} --output_dir outputs",
+      "cwd": "${workspaceRoot}",
+      "category": "pipeline",
+      "inputs": {
+        "ueLevel": {
+          "type": "string",
+          "description": "UE Level path",
+          "default": "/Game/Levl/Maps/Empty"
+        },
+        "blueprint": {
+          "type": "string", 
+          "description": "Blueprint to spawn",
+          "default": "/Game/The13thNight/Blueprints/BP_Nimble"
+        },
+        "shotName": {
+          "type": "string",
+          "description": "Shot name",
+          "default": "Shot01"
+        },
+        "styleImage": {
+          "type": "pickString",
+          "description": "Style image",
+          "options": [
+            "refs/style_festive_night.png",
+            "refs/style_ice_crystal.png", 
+            "refs/style_magical_glow.png",
+            "refs/style_dark_forest.png",
+            "refs/style_candy_cane.png"
+          ],
+          "default": "refs/style_festive_night.png"
+        },
+        "location": {
+          "type": "string",
+          "description": "Spawn location (X,Y,Z)",
+          "default": "0,0,100"
+        },
+        "resolution": {
+          "type": "pickString",
+          "description": "Render resolution",
+          "options": ["1280x720", "1920x1080", "2560x1440", "1024x1024"],
+          "default": "1280x720"
+        },
+        "fps": {
+          "type": "pickString",
+          "description": "Frame rate",
+          "options": ["24", "30", "60"],
+          "default": "24"
+        }
+      }
+    },
+    {
+      "id": "ue:bridge:test",
+      "label": "🔗 Test UE Bridge Connection",
+      "description": "Send test command to Unreal Engine bridge",
+      "shell": "source .venv/bin/activate && python3 -c \"import json, time; path='./UnrealBridge/inbox/test_' + str(int(time.time())) + '.json'; data={'id':'test','action':'ping','payload':{}}; open(path,'w').write(json.dumps(data)); print(f'Test command written to: {path}')\"",
+      "cwd": "${workspaceRoot}",
+      "category": "debug"
+    },
+    {
+      "id": "pipeline:clean",
+      "label": "🧹 Clean Pipeline Queue",
+      "description": "Clear UE bridge queue and temp files",
+      "shell": "rm -f ./UnrealBridge/inbox/*.json ./UnrealBridge/outbox/*.json && echo 'Bridge queue cleaned'",
+      "cwd": "${workspaceRoot}",
+      "category": "maintenance"
+    },
+    {
+      "id": "pipeline:setup",
+      "label": "⚙️ Setup Pipeline Dependencies",
+      "description": "Install MCP and other required dependencies",
+      "shell": "source .venv/bin/activate && pip install 'mcp[server]' fastmcp urllib3 && echo 'Dependencies installed'",
+      "cwd": "${workspaceRoot}",
+      "category": "setup"
+    },
+    {
+      "id": "results:open",
+      "label": "📁 Open Results Folder",
+      "description": "Open outputs folder to view rendered results",
+      "shell": "open outputs",
+      "cwd": "${workspaceRoot}",
+      "category": "utility"
+    },
+    {
+      "id": "batch:characters",
+      "label": "👥 Batch Render All Characters",
+      "description": "Render all characters with different styles",
+      "shell": "source .venv/bin/activate && python3 -c \"\nimport subprocess\ncharacters = ['BP_Nimble', 'BP_Pip', 'BP_Jingles', 'BP_Fenn']\nstyles = ['style_festive_night.png', 'style_magical_glow.png']\nfor char in characters:\n    for style in styles:\n        cmd = f'python3 ue_to_comfy_oneclick.py --host 127.0.0.1 --port 8765 --level /Game/Levl/Maps/Empty --bp_path /Game/The13thNight/Blueprints/{char} --movie_out exports/{char}_{style.split(\\\"_\\\")[1]}.mp4 --style_img refs/{style} --output_dir outputs'\n        print(f'Rendering {char} with {style}...')\n        subprocess.run(cmd, shell=True)\n\"",
+      "cwd": "${workspaceRoot}",
+      "category": "batch"
+    }
+  ],
+  "categories": {
+    "pipeline": {
+      "label": "🎬 Pipeline",
+      "description": "Main workflow commands"
+    },
+    "services": {
+      "label": "🔧 Services", 
+      "description": "Start/stop services"
+    },
+    "render": {
+      "label": "🎨 Rendering",
+      "description": "Direct rendering commands"
+    },
+    "debug": {
+      "label": "🐛 Debug",
+      "description": "Testing and debugging"
+    },
+    "maintenance": {
+      "label": "🧹 Maintenance",
+      "description": "Cleanup and maintenance"
+    },
+    "setup": {
+      "label": "⚙️ Setup",
+      "description": "Installation and setup"
+    },
+    "utility": {
+      "label": "🛠️ Utilities",
+      "description": "Helper commands"
+    },
+    "batch": {
+      "label": "📦 Batch",
+      "description": "Batch processing commands"
+    }
+  }
+}
