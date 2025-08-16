@@ -201,7 +201,7 @@ def main():
         }
 
     print(f"LevlStudio MCP server listening on {args.host}:{args.port}")
-    server.run(host=args.host, port=args.port)
+    server.run()
 
 if __name__ == '__main__':
     main()
