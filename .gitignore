@@ -62,3 +62,12 @@ $RECYCLE.BIN/
 .idea/
 *.swp
 *.swo
+
+# Secrets and credentials
+client_secret_*.json
+*.secret
+*.key
+.env
+.env.local
+.env.production
+config/secrets.json
