@@ -1,0 +1,395 @@
+{
+  "assets": {
+    "characters": {
+      "char_nimble": {
+        "type": "character",
+        "tags": ["elf", "protagonist", "agile", "hero"],
+        "description": "Nimble the elf - main protagonist",
+        "filepath": "//assets/characters/char_nimble/char_nimble_v001.glb",
+        "import_type": "import",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "char_pip": {
+        "type": "character",
+        "tags": ["elf", "companion", "tech", "sidekick"],
+        "description": "Pip - tech-savvy companion",
+        "filepath": "//assets/characters/char_pip/char_pip_v001.glb",
+        "filepath_alt": "//assets/characters/char_pip/char_pip_v002.glb",
+        "import_type": "import",
+        "location": [2.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [0.9, 0.9, 0.9]
+      },
+      "char_jingles": {
+        "type": "character",
+        "tags": ["elf", "companion", "magic", "musical"],
+        "description": "Jingles - magical musical elf companion",
+        "filepath": "//assets/characters/char_jingles/char_jingles_v001.glb",
+        "import_type": "import",
+        "location": [-2.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.1, 1.1, 1.1]
+      },
+      "char_santa": {
+        "type": "character",
+        "tags": ["santa", "festive", "magical", "leader"],
+        "description": "Santa Claus",
+        "filepath": "//assets/characters/char_santa/char_santa_v001.glb",
+        "filepath_alt": "//assets/characters/char_santa/char_santa_v002.glb",
+        "import_type": "import",
+        "location": [0.0, 5.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.3, 1.3, 1.3]
+      },
+      "char_evil_elf_1": {
+        "type": "character",
+        "tags": ["elf", "antagonist", "evil", "dark"],
+        "description": "Evil Elf Variant 1",
+        "filepath": "//assets/characters/char_evil_elf_1/char_evil_elf_1_v001.glb",
+        "import_type": "import",
+        "location": [5.0, 5.0, 0.0],
+        "rotation": [0.0, 0.0, 3.14159],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "char_evil_elf_4": {
+        "type": "character",
+        "tags": ["elf", "antagonist", "evil", "dark"],
+        "description": "Evil Elf Variant 4",
+        "filepath": "//assets/characters/char_evil_elf_4/char_evil_elf_4_v001.glb",
+        "import_type": "import",
+        "location": [7.0, 5.0, 0.0],
+        "rotation": [0.0, 0.0, 3.14159],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "char_evil_elf_5": {
+        "type": "character",
+        "tags": ["elf", "antagonist", "evil", "dark"],
+        "description": "Evil Elf Variant 5",
+        "filepath": "//assets/characters/char_evil_elf_5/char_evil_elf_5_v001.glb",
+        "import_type": "import",
+        "location": [9.0, 5.0, 0.0],
+        "rotation": [0.0, 0.0, 3.14159],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "char_crinkle": {
+        "type": "character",
+        "tags": ["elf", "support", "festive"],
+        "description": "Crinkle - festive helper elf",
+        "filepath": "//assets/characters/char_crinkle/char_crinkle_v001.glb",
+        "filepath_fbx": "//assets/characters/char_crinkle/char_crinkle_v001.fbx",
+        "import_type": "import",
+        "location": [-3.0, 2.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [0.95, 0.95, 0.95]
+      },
+      "char_fenn": {
+        "type": "character",
+        "tags": ["elf", "support", "scout"],
+        "description": "Fenn - scout elf",
+        "filepath": "//assets/characters/char_fenn/char_fenn_v001.glb",
+        "import_type": "import",
+        "location": [-5.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "char_fin": {
+        "type": "character",
+        "tags": ["elf", "support", "aquatic"],
+        "description": "Fin - aquatic themed elf",
+        "filepath": "//assets/characters/char_fin/char_fin_v001.glb",
+        "filepath_alt": "//assets/characters/char_fin/char_fin_v002.glb",
+        "import_type": "import",
+        "location": [4.0, -2.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "char_glitch": {
+        "type": "character",
+        "tags": ["elf", "tech", "digital", "chaotic"],
+        "description": "Glitch - digital chaos elf",
+        "filepath": "//assets/characters/char_glitch/char_glitch_v001.glb",
+        "filepath_alt": "//assets/characters/char_glitch/char_glitch_v002.glb",
+        "import_type": "import",
+        "location": [0.0, -5.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.05, 1.05, 1.05]
+      },
+      "char_jax": {
+        "type": "character",
+        "tags": ["elf", "support", "warrior"],
+        "description": "Jax - warrior elf",
+        "filepath": "//assets/characters/char_jax/char_jax_v001.glb",
+        "import_type": "import",
+        "location": [3.0, 3.0, 0.0],
+        "rotation": [0.0, 0.0, 0.785],
+        "scale": [1.1, 1.1, 1.1]
+      },
+      "char_marzipan_maw": {
+        "type": "character",
+        "tags": ["creature", "antagonist", "sweet", "monster"],
+        "description": "Marzipan Maw - sweet monster",
+        "filepath": "//assets/characters/char_marzipan_maw/char_marzipan_maw_v001.glb",
+        "filepath_fbx": "//assets/characters/char_marzipan_maw/char_marzipan_maw_v001.fbx",
+        "import_type": "import",
+        "location": [0.0, 8.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [2.0, 2.0, 2.0],
+        "textures": {
+          "base_color": "//assets/characters/char_marzipan_maw/tex/tripo_image_base_color.jpg",
+          "normal": "//assets/characters/char_marzipan_maw/tex/tripo_image_normal.jpg"
+        }
+      },
+      "char_caroler": {
+        "type": "character",
+        "tags": ["elf", "musical", "festive", "singer"],
+        "description": "The Caroler - musical performer",
+        "filepath": "//assets/characters/char_caroler/char_caroler_v001.glb",
+        "import_type": "import",
+        "location": [-2.0, -3.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "char_thistle": {
+        "type": "character",
+        "tags": ["elf", "nature", "thorny", "guardian"],
+        "description": "Thistle - nature guardian",
+        "filepath": "//assets/characters/char_thistle/char_thistle_v001.glb",
+        "import_type": "import",
+        "location": [-6.0, 2.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [0.9, 0.9, 0.9]
+      },
+      "char_sock_snatcher": {
+        "type": "character",
+        "tags": ["creature", "mischief", "thief", "comic"],
+        "description": "Sock Snatcher - mischievous thief",
+        "filepath": "//assets/characters/char_sock_snatcher/char_sock_snatcher_v001.glb",
+        "import_type": "import",
+        "location": [6.0, -3.0, 0.0],
+        "rotation": [0.0, 0.0, 2.356],
+        "scale": [0.8, 0.8, 0.8]
+      },
+      "char_wrath_wrangler": {
+        "type": "character",
+        "tags": ["elf", "antagonist", "anger", "warrior"],
+        "description": "Wrath Wrangler - angry warrior",
+        "filepath": "//assets/characters/char_wrath_wrangler/char_wrath_wrangler_v001.glb",
+        "import_type": "import",
+        "location": [10.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 3.14159],
+        "scale": [1.2, 1.2, 1.2]
+      },
+      "char_yule": {
+        "type": "character",
+        "tags": ["spirit", "festive", "magical", "ancient"],
+        "description": "Yule - ancient festive spirit",
+        "filepath": "//assets/characters/char_yule/char_yule_v001.glb",
+        "import_type": "import",
+        "location": [0.0, 0.0, 3.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.5, 1.5, 1.5]
+      },
+      "char_gnome_cat": {
+        "type": "character",
+        "tags": ["creature", "pet", "magical", "companion"],
+        "description": "Gnome Cat - magical pet companion",
+        "filepath": "//assets/characters/char_gnome_cat/char_gnome_cat_v001.glb",
+        "import_type": "import",
+        "location": [1.0, -1.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [0.6, 0.6, 0.6]
+      }
+    },
+    "props": {
+      "prop_glowing_book": {
+        "type": "prop",
+        "tags": ["magical", "runes", "ancient"],
+        "description": "Ancient glowing book with magical runes",
+        "filepath": "//assets/props/prop_glowing_book/prop_glowing_book_v002.glb",
+        "import_type": "import",
+        "location": [0.0, 0.0, 0.5],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.2, 1.2, 1.2]
+      },
+      "prop_candy_cane_pipes": {
+        "type": "prop",
+        "tags": ["festive", "industrial", "steampunk"],
+        "description": "Candy cane industrial pipes system",
+        "filepath": "//assets/props/prop_candy_cane_pipes/prop_candy_cane_pipes_v003.fbx",
+        "import_type": "import",
+        "location": [5.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 1.5708],
+        "scale": [2.0, 2.0, 2.0]
+      },
+      "prop_santas_sleigh_ultra": {
+        "type": "prop",
+        "tags": ["vehicle", "festive", "flying"],
+        "description": "Ultra-modern Santa's sleigh",
+        "filepath": "//assets/props/prop_santas_sleigh_ultra/prop_santas_sleigh_ultra_v001.glb",
+        "import_type": "import",
+        "location": [0.0, 10.0, 3.0],
+        "rotation": [0.0, 0.0, 0.785],
+        "scale": [3.0, 3.0, 3.0]
+      }
+    },
+    "environments": {
+      "env_santa_village_night": {
+        "type": "environment",
+        "tags": ["village", "night", "festive", "snow"],
+        "description": "Santa's village at night with snow",
+        "filepath": "//assets/environments/env_santa_village_night/env_santa_village_night_v002.glb",
+        "blockout": "//assets/environments/env_santa_village_night/env_santa_village_night_blockout_v001.blend",
+        "collection": "COL_env_santa_village_night",
+        "import_type": "link_or_import",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0],
+        "lighting_preset": "night_snow"
+      },
+      "env_forbidden_library": {
+        "type": "environment",
+        "tags": ["interior", "library", "mysterious", "dark"],
+        "description": "Forbidden magical library",
+        "filepath": "//assets/environments/env_forbidden_library/env_forbidden_library_v001.blend",
+        "collection": "COL_env_forbidden_library",
+        "import_type": "link",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0],
+        "lighting_preset": "dark_interior"
+      },
+      "env_yule_core_chamber": {
+        "type": "environment",
+        "tags": ["chamber", "core", "magical", "festive"],
+        "description": "Yule core magical chamber",
+        "filepath": "//assets/environments/env_yule_core_chamber/env_yule_core_chamber_v001.blend",
+        "collection": "COL_env_yule_core_chamber",
+        "import_type": "link",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0],
+        "lighting_preset": "magical_glow"
+      }
+    },
+    "fx": {
+      "fx_snow_swirl_geo": {
+        "type": "fx",
+        "tags": ["snow", "particle", "weather"],
+        "description": "Geometric snow swirl effect",
+        "filepath": "//assets/fx/fx_snow_swirl_geo_v001.blend",
+        "collection": "COL_fx_snow_swirl",
+        "import_type": "link",
+        "location": [0.0, 0.0, 5.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [10.0, 10.0, 10.0]
+      },
+      "fx_volumetric_fog": {
+        "type": "fx",
+        "tags": ["fog", "volumetric", "atmosphere"],
+        "description": "Volumetric fog for atmosphere",
+        "filepath": "//assets/fx/fx_volumetric_fog_v001.blend",
+        "import_type": "append",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [50.0, 50.0, 20.0]
+      }
+    },
+    "materials": {
+      "mat_brass_preset": {
+        "type": "material",
+        "tags": ["metal", "brass", "shiny"],
+        "description": "Brass material preset",
+        "filepath": "//assets/materials/mat_brass_preset_v001.blend",
+        "node_group": "NG_mat_brass",
+        "import_type": "append"
+      },
+      "mat_snow_preset": {
+        "type": "material",
+        "tags": ["snow", "white", "subsurface"],
+        "description": "Snow material with SSS",
+        "filepath": "//assets/materials/mat_snow_preset_v001.blend",
+        "node_group": "NG_mat_snow",
+        "import_type": "append"
+      },
+      "mat_ice_preset": {
+        "type": "material",
+        "tags": ["ice", "transparent", "refraction"],
+        "description": "Ice material with refraction",
+        "filepath": "//assets/materials/mat_ice_preset_v001.blend",
+        "node_group": "NG_mat_ice",
+        "import_type": "append"
+      },
+      "mat_wood_preset": {
+        "type": "material",
+        "tags": ["wood", "organic", "festive"],
+        "description": "Festive wood material",
+        "filepath": "//assets/materials/mat_wood_preset_v001.blend",
+        "node_group": "NG_mat_wood",
+        "import_type": "append"
+      }
+    },
+    "cameras": {
+      "cam_fpv_drone_swoop": {
+        "type": "camera",
+        "tags": ["fpv", "drone", "aerial", "dynamic"],
+        "description": "FPV drone swoop camera rig",
+        "filepath": "//assets/cameras/cam_fpv_drone_swoop_rig_v001.blend",
+        "collection": "COL_cam_fpv_drone_swoop",
+        "import_type": "link",
+        "location": [10.0, -10.0, 10.0],
+        "rotation": [1.0, 0.0, 0.785],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "cam_crane_sweep": {
+        "type": "camera",
+        "tags": ["crane", "cinematic", "smooth"],
+        "description": "Cinematic crane sweep rig",
+        "filepath": "//assets/cameras/cam_crane_sweep_rig_v001.blend",
+        "collection": "COL_cam_crane_sweep",
+        "import_type": "link",
+        "location": [0.0, -15.0, 8.0],
+        "rotation": [1.2, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0]
+      }
+    }
+  },
+  "lighting_presets": {
+    "night_snow": {
+      "sun_energy": 0.2,
+      "sun_color": [0.6, 0.7, 1.0],
+      "ambient_color": [0.1, 0.15, 0.3],
+      "fog_density": 0.05
+    },
+    "dark_interior": {
+      "sun_energy": 0.0,
+      "ambient_color": [0.05, 0.05, 0.08],
+      "fog_density": 0.02
+    },
+    "magical_glow": {
+      "sun_energy": 0.5,
+      "sun_color": [1.0, 0.8, 0.6],
+      "ambient_color": [0.2, 0.1, 0.3],
+      "fog_density": 0.03
+    },
+    "dawn": {
+      "sun_energy": 0.8,
+      "sun_color": [1.0, 0.7, 0.4],
+      "ambient_color": [0.3, 0.2, 0.1],
+      "fog_density": 0.04
+    },
+    "midday": {
+      "sun_energy": 1.5,
+      "sun_color": [1.0, 0.95, 0.8],
+      "ambient_color": [0.4, 0.45, 0.5],
+      "fog_density": 0.01
+    }
+  },
+  "character_groups": {
+    "heroes": ["char_nimble", "char_pip", "char_jingles"],
+    "antagonists": ["char_evil_elf_1", "char_evil_elf_4", "char_evil_elf_5", "char_wrath_wrangler", "char_marzipan_maw"],
+    "support": ["char_santa", "char_crinkle", "char_fenn", "char_fin", "char_glitch", "char_jax", "char_caroler", "char_thistle"],
+    "creatures": ["char_sock_snatcher", "char_gnome_cat", "char_yule"]
+  }
+}

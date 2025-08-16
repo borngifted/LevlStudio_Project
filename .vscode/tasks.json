@@ -1,0 +1,188 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "UE → Comfy: One-Click Build+Render+Style",
+      "type": "shell",
+      "command": "python3",
+      "args": [
+        "${workspaceFolder}/ue_to_comfy_oneclick.py",
+        "--host", "127.0.0.1",
+        "--port", "8765",
+        "--level", "${input:ueLevelPath}",
+        "--bp_path", "${input:ueBPPath}",
+        "--movie_out", "${workspaceFolder}/exports/oneclick_${input:shotName}.mp4",
+        "--style_img", "${input:styleImagePath}",
+        "--workflow", "${workspaceFolder}/comfy_workflows/wanfn_depth_pose_canny_template.json",
+        "--location", "${input:spawnLocation}",
+        "--rotation", "${input:spawnRotation}",
+        "--sequence", "Seq_${input:shotName}",
+        "--resolution", "${input:resolution}",
+        "--fps", "${input:fps}",
+        "--output_dir", "${workspaceFolder}/outputs"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start MCP Server (UE→Comfy)",
+      "type": "shell",
+      "command": "python3",
+      "args": [
+        "levl_ue_to_comfy_server.py",
+        "--ue_bridge", "./UnrealBridge",
+        "--comfy_host", "127.0.0.1",
+        "--comfy_port", "8188"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "UE_BRIDGE": "./UnrealBridge",
+          "COMFY_HOST": "127.0.0.1",
+          "COMFY_PORT": "8188"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^(ERROR|WARNING):\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^LevlStudio UE→Comfy MCP listening",
+          "endsPattern": "^LevlStudio UE→Comfy MCP listening"
+        }
+      }
+    },
+    {
+      "label": "Install MCP Dependencies",
+      "type": "shell",
+      "command": "pip",
+      "args": [
+        "install",
+        "mcp[server]",
+        "fastmcp"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Test UE Bridge Connection",
+      "type": "shell",
+      "command": "python3",
+      "args": [
+        "-c",
+        "import json, time; path='./UnrealBridge/inbox/test_' + str(int(time.time())) + '.json'; data={'id':'test','action':'ping','payload':{}}; open(path,'w').write(json.dumps(data)); print(f'Test command written to: {path}')"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Clear Bridge Queue",
+      "type": "shell",
+      "command": "rm",
+      "args": [
+        "-f",
+        "./UnrealBridge/inbox/*.json",
+        "./UnrealBridge/outbox/*.json"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "ueLevelPath",
+      "type": "promptString",
+      "description": "UE Level path (e.g., /Game/Levl/Maps/Empty)",
+      "default": "/Game/Levl/Maps/Empty"
+    },
+    {
+      "id": "ueBPPath",
+      "type": "promptString",
+      "description": "Blueprint path to spawn",
+      "default": "/Game/The13thNight/Blueprints/BP_Nimble"
+    },
+    {
+      "id": "styleImagePath",
+      "type": "pickString",
+      "description": "Style image",
+      "options": [
+        "${workspaceFolder}/refs/style_festive_night.png",
+        "${workspaceFolder}/refs/style_ice_crystal.png",
+        "${workspaceFolder}/refs/style_magical_glow.png",
+        "${workspaceFolder}/refs/style_dark_forest.png",
+        "${workspaceFolder}/refs/style_candy_cane.png"
+      ],
+      "default": "${workspaceFolder}/refs/style_festive_night.png"
+    },
+    {
+      "id": "shotName",
+      "type": "promptString",
+      "description": "Shot name (no spaces)",
+      "default": "Shot01"
+    },
+    {
+      "id": "spawnLocation",
+      "type": "promptString",
+      "description": "Spawn location (X,Y,Z)",
+      "default": "0,0,100"
+    },
+    {
+      "id": "spawnRotation",
+      "type": "promptString",
+      "description": "Spawn rotation (Roll,Pitch,Yaw)",
+      "default": "0,0,0"
+    },
+    {
+      "id": "resolution",
+      "type": "pickString",
+      "description": "Render resolution",
+      "options": [
+        "1280x720",
+        "1920x1080",
+        "2560x1440",
+        "3840x2160",
+        "1024x1024",
+        "512x512"
+      ],
+      "default": "1280x720"
+    },
+    {
+      "id": "fps",
+      "type": "pickString",
+      "description": "Frames per second",
+      "options": ["24", "30", "60"],
+      "default": "24"
+    }
+  ]
+}

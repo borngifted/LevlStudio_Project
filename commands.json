@@ -1,0 +1,23 @@
+{
+    "$schema": "https://voideditor.com/schema/commands.json",
+    "commands": [
+        {
+            "id": "mcp:start",
+            "label": "Start Levl MCP Server",
+            "shell": "source .venv/bin/activate && python3 levl_ue_to_comfy_server.py --ue_bridge ./UnrealBridge",
+            "cwd": "${workspaceRoot}"
+        },
+        {
+            "id": "comfy:run",
+            "label": "Run Comfy Workflow (WAN-F’N)",
+            "shell": "python3 comfy_bridge_client.py --host 127.0.0.1 --port 8188 --workflow comfy_workflows/wanfn_depth_pose_canny_template.json --video_in exports/ue_shot01.mp4 --style_img refs/style_look1.png --out_dir outputs",
+            "cwd": "${workspaceRoot}"
+        },
+        {
+            "id": "ue:oneclick",
+            "label": "UE → Comfy One‑Click",
+            "shell": "python3 ue_to_comfy_oneclick.py --host 127.0.0.1 --port 8765 --level /Game/Levl/Maps/Empty --bp_path /Game/Levl/BP/BP_MyCone --movie_out exports/oneclick.mp4 --style_img refs/style_look1.png --workflow comfy_workflows/wanfn_depth_pose_canny_template.json --output_dir outputs",
+            "cwd": "${workspaceRoot}"
+        }
+    ]
+}

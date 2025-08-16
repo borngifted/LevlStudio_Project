@@ -1,0 +1,31 @@
+{
+  "python.defaultInterpreterPath": "/usr/local/bin/python3",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.formatting.provider": "black",
+  "python.autoComplete.extraPaths": [
+    "/Applications/Blender.app/Contents/Resources/3.0/scripts/modules",
+    "/Applications/Blender.app/Contents/Resources/3.0/scripts/addons"
+  ],
+  "files.associations": {
+    "*.blend": "blender",
+    "*.blend1": "blender"
+  },
+  "editor.rulers": [88, 120],
+  "editor.formatOnSave": true,
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/*.blend1": true,
+    "**/*.blend2": true
+  },
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.debugpy",
+    "blenderfreetimeprojects.blender-python-code-templates",
+    "continue.continue",
+    "github.copilot",
+    "github.copilot-chat"
+  ]
+}

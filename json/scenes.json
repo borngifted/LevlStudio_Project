@@ -1,0 +1,123 @@
+{
+  "scenes": [
+    {
+      "name": "Santa Village Night Scene",
+      "description": "Main village scene with all heroes and Santa",
+      "environment": "env_santa_village_night",
+      "characters": ["char_nimble", "char_pip", "char_jingles", "char_santa", "char_crinkle"],
+      "props": ["prop_glowing_book", "prop_candy_cane_pipes", "prop_santas_sleigh_ultra"],
+      "effects": ["fx_snow_swirl_geo", "fx_volumetric_fog"],
+      "cameras": ["cam_fpv_drone_swoop", "cam_crane_sweep"],
+      "materials": ["mat_snow_preset", "mat_ice_preset", "mat_brass_preset"],
+      "default_camera": "cam_fpv_drone_swoop",
+      "lighting_preset": "night_snow",
+      "frame_range": [1, 250]
+    },
+    {
+      "name": "Forbidden Library Scene",
+      "description": "Dark mysterious library interior with glitch appearance",
+      "environment": "env_forbidden_library",
+      "characters": ["char_nimble", "char_glitch", "char_caroler"],
+      "props": ["prop_glowing_book"],
+      "effects": ["fx_volumetric_fog"],
+      "cameras": ["cam_crane_sweep"],
+      "materials": ["mat_wood_preset", "mat_brass_preset"],
+      "default_camera": "cam_crane_sweep",
+      "lighting_preset": "dark_interior",
+      "frame_range": [1, 150]
+    },
+    {
+      "name": "Yule Core Chamber Scene",
+      "description": "Magical core chamber finale with all characters",
+      "environment": "env_yule_core_chamber",
+      "characters": ["char_nimble", "char_pip", "char_jingles", "char_yule", "char_santa"],
+      "props": ["prop_candy_cane_pipes"],
+      "effects": ["fx_snow_swirl_geo"],
+      "cameras": ["cam_fpv_drone_swoop"],
+      "materials": ["mat_ice_preset", "mat_brass_preset"],
+      "default_camera": "cam_fpv_drone_swoop",
+      "lighting_preset": "magical_glow",
+      "frame_range": [1, 300]
+    },
+    {
+      "name": "Evil Elf Confrontation",
+      "description": "Battle scene with evil elves",
+      "environment": "env_santa_village_night",
+      "characters": ["char_nimble", "char_pip", "char_evil_elf_1", "char_evil_elf_4", "char_evil_elf_5", "char_wrath_wrangler"],
+      "props": ["prop_glowing_book"],
+      "effects": ["fx_snow_swirl_geo", "fx_volumetric_fog"],
+      "cameras": ["cam_fpv_drone_swoop", "cam_crane_sweep"],
+      "materials": ["mat_snow_preset", "mat_ice_preset"],
+      "default_camera": "cam_fpv_drone_swoop",
+      "lighting_preset": "night_snow",
+      "frame_range": [1, 200]
+    },
+    {
+      "name": "Marzipan Maw Boss Fight",
+      "description": "Boss fight with the sweet monster",
+      "environment": "env_yule_core_chamber",
+      "characters": ["char_nimble", "char_pip", "char_jingles", "char_marzipan_maw", "char_jax", "char_fenn"],
+      "props": ["prop_candy_cane_pipes", "prop_glowing_book"],
+      "effects": ["fx_volumetric_fog"],
+      "cameras": ["cam_fpv_drone_swoop"],
+      "materials": ["mat_brass_preset"],
+      "default_camera": "cam_fpv_drone_swoop",
+      "lighting_preset": "magical_glow",
+      "frame_range": [1, 400]
+    },
+    {
+      "name": "Support Characters Meeting",
+      "description": "All support characters gathering",
+      "environment": "env_santa_village_night",
+      "characters": ["char_crinkle", "char_fenn", "char_fin", "char_jax", "char_caroler", "char_thistle", "char_gnome_cat"],
+      "props": ["prop_santas_sleigh_ultra"],
+      "effects": ["fx_snow_swirl_geo"],
+      "cameras": ["cam_crane_sweep"],
+      "materials": ["mat_snow_preset", "mat_wood_preset"],
+      "default_camera": "cam_crane_sweep",
+      "lighting_preset": "dawn",
+      "frame_range": [1, 180]
+    },
+    {
+      "name": "Sock Snatcher Chase",
+      "description": "Comic relief scene with Sock Snatcher",
+      "environment": "env_santa_village_night",
+      "characters": ["char_pip", "char_sock_snatcher", "char_gnome_cat", "char_glitch"],
+      "props": [],
+      "effects": ["fx_snow_swirl_geo"],
+      "cameras": ["cam_fpv_drone_swoop"],
+      "materials": ["mat_snow_preset"],
+      "default_camera": "cam_fpv_drone_swoop",
+      "lighting_preset": "midday",
+      "frame_range": [1, 120]
+    }
+  ],
+  "project_settings": {
+    "fps": 24,
+    "resolution": [1920, 1080],
+    "output_format": "PNG",
+    "color_management": "Filmic",
+    "samples": 128,
+    "project_root": "/Users/workofficial/Desktop/The_13th_Night/LevlStudio_Project"
+  },
+  "character_roles": {
+    "protagonists": {
+      "primary": "char_nimble",
+      "sidekicks": ["char_pip", "char_jingles"]
+    },
+    "antagonists": {
+      "main_villain": "char_wrath_wrangler",
+      "boss": "char_marzipan_maw",
+      "minions": ["char_evil_elf_1", "char_evil_elf_4", "char_evil_elf_5"]
+    },
+    "support": {
+      "mentor": "char_santa",
+      "allies": ["char_crinkle", "char_fenn", "char_fin", "char_jax", "char_caroler", "char_thistle"],
+      "comic_relief": ["char_sock_snatcher", "char_glitch"],
+      "companions": ["char_gnome_cat"]
+    },
+    "mystical": {
+      "spirit": "char_yule"
+    }
+  }
+}

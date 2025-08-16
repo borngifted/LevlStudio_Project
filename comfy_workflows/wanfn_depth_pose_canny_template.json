@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "title": "WAN-F'N Depth+Pose+Canny Style Transfer",
+    "description": "LevlStudio template for UE5 render to AI style transfer",
+    "version": "1.0",
+    "dynamic_overrides": {
+      "video_path": "",
+      "style_image_path": "",
+      "output_dir": "outputs"
+    }
+  },
+  "1": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "video": "{video_path}",
+      "frame_rate": 24,
+      "start_frame": 0,
+      "end_frame": -1
+    },
+    "_meta": {
+      "title": "Load UE Render"
+    }
+  },
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "{style_image_path}"
+    },
+    "_meta": {
+      "title": "Load Style Image"
+    }
+  },
+  "3": {
+    "class_type": "DepthAnythingV2",
+    "inputs": {
+      "images": ["1", 0],
+      "model": "depth_anything_v2_vitb",
+      "resolution": 512
+    },
+    "_meta": {
+      "title": "Extract Depth"
+    }
+  },
+  "4": {
+    "class_type": "DWPoseDetector",
+    "inputs": {
+      "images": ["1", 0],
+      "detect_pose": true,
+      "detect_face": true,
+      "detect_hand": true
+    },
+    "_meta": {
+      "title": "Extract Pose"
+    }
+  },
+  "5": {
+    "class_type": "PyraCannyDetector",
+    "inputs": {
+      "images": ["1", 0],
+      "low_threshold": 100,
+      "high_threshold": 200
+    },
+    "_meta": {
+      "title": "Extract Edges"
+    }
+  },
+  "6": {
+    "class_type": "WANFNModel",
+    "inputs": {
+      "model": "wanfn_v2",
+      "checkpoint": "wanfn_style_transfer_v2.safetensors"
+    },
+    "_meta": {
+      "title": "Load WAN-F'N Model"
+    }
+  },
+  "7": {
+    "class_type": "WANFNStyleTransfer",
+    "inputs": {
+      "model": ["6", 0],
+      "content_images": ["1", 0],
+      "style_image": ["2", 0],
+      "depth_map": ["3", 0],
+      "pose_map": ["4", 0],
+      "edge_map": ["5", 0],
+      "style_strength": 0.8,
+      "content_strength": 0.3,
+      "depth_weight": 0.4,
+      "pose_weight": 0.3,
+      "edge_weight": 0.3,
+      "temporal_consistency": 0.85,
+      "batch_size": 4
+    },
+    "_meta": {
+      "title": "Apply Style Transfer"
+    }
+  },
+  "8": {
+    "class_type": "VideoColorCorrection",
+    "inputs": {
+      "images": ["7", 0],
+      "brightness": 0,
+      "contrast": 1.1,
+      "saturation": 1.2,
+      "gamma": 1.0
+    },
+    "_meta": {
+      "title": "Color Correction"
+    }
+  },
+  "9": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "images": ["8", 0],
+      "filename_prefix": "styled_",
+      "fps": 24,
+      "format": "mp4",
+      "codec": "h264",
+      "quality": 95,
+      "output_path": "{output_dir}"
+    },
+    "_meta": {
+      "title": "Save Styled Video"
+    }
+  },
+  "10": {
+    "class_type": "PreviewVideo",
+    "inputs": {
+      "images": ["8", 0]
+    },
+    "_meta": {
+      "title": "Preview Result"
+    }
+  },
+  "workflow": {
+    "nodes": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "links": [
+      [1, 0, 3, 0],
+      [1, 0, 4, 0],
+      [1, 0, 5, 0],
+      [1, 0, 7, 1],
+      [2, 0, 7, 2],
+      [3, 0, 7, 3],
+      [4, 0, 7, 4],
+      [5, 0, 7, 5],
+      [6, 0, 7, 0],
+      [7, 0, 8, 0],
+      [8, 0, 9, 0],
+      [8, 0, 10, 0]
+    ]
+  }
+}

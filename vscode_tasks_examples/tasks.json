@@ -1,0 +1,42 @@
+
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Levl: Start MCP Server",
+      "type": "shell",
+      "command": "python3",
+      "args": [
+        "${workspaceFolder}/levl_mcp_server.py",
+        "--blender", "/Applications/Blender.app/Contents/MacOS/Blender",
+        "--addon", "${workspaceFolder}/levlstudio_scene_builder_addon.py",
+        "--assets", "${workspaceFolder}/json/assets.json",
+        "--scenes", "${workspaceFolder}/json/scenes.json",
+        "--project", "${workspaceFolder}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Levl: Build Scene (CLI)",
+      "type": "shell",
+      "command": "/Applications/Blender.app/Contents/MacOS/Blender",
+      "args": [
+        "-b",
+        "-P", "${workspaceFolder}/blender_operator_runner.py",
+        "--",
+        "--op", "levl.build_scene_and_optional_export",
+        "--addon", "${workspaceFolder}/levlstudio_scene_builder_addon.py",
+        "--assets", "${workspaceFolder}/json/assets.json",
+        "--scenes", "${workspaceFolder}/json/scenes.json",
+        "--project", "${workspaceFolder}",
+        "--scene_id", "scene_01_santa_village_13thnight",
+        "--camera_override", "",
+        "--time_override", "",
+        "--preview_png", "${workspaceFolder}/renders/scene01.png",
+        "--export_glb", "${workspaceFolder}/exports/scene01.glb",
+        "--export_fbx", "${workspaceFolder}/exports/scene01.fbx"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

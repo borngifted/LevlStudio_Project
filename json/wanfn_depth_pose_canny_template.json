@@ -1,0 +1,74 @@
+{
+    "workflow": {
+        "name": "WAN-F'N Depth+Pose+Canny Flicker-Free Template",
+        "description": "Combines DepthAnything + DWPose + PyraCanny into a flicker-free WAN-F'N style transfer pipeline.",
+        "nodes": [
+            {
+                "id": "load_video",
+                "type": "LoadVideo",
+                "params": {
+                    "path": "@@video_path@@",
+                    "frame_rate": 24
+                }
+            },
+            {
+                "id": "depth_anything",
+                "type": "ControlNet_DepthAnything",
+                "params": {
+                    "input": "load_video.frames"
+                }
+            },
+            {
+                "id": "dw_pose",
+                "type": "ControlNet_DWPose",
+                "params": {
+                    "input": "load_video.frames"
+                }
+            },
+            {
+                "id": "pyra_canny",
+                "type": "ControlNet_PyraCanny",
+                "params": {
+                    "input": "load_video.frames"
+                }
+            },
+            {
+                "id": "merge_cn",
+                "type": "MergeControlNets",
+                "params": {
+                    "inputs": [
+                        "depth_anything.output",
+                        "dw_pose.output",
+                        "pyra_canny.output"
+                    ]
+                }
+            },
+            {
+                "id": "style_image",
+                "type": "LoadImage",
+                "params": {
+                    "path": "@@style_image_path@@"
+                }
+            },
+            {
+                "id": "wanfn_transfer",
+                "type": "WANFN_StyleTransfer",
+                "params": {
+                    "video_frames": "load_video.frames",
+                    "style_image": "style_image.output",
+                    "controlnet_guides": "merge_cn.output",
+                    "strength": 0.85
+                }
+            },
+            {
+                "id": "save_video",
+                "type": "SaveVideo",
+                "params": {
+                    "frames": "wanfn_transfer.output",
+                    "path": "@@output_dir@@/wanfn_flicker_free.mp4",
+                    "frame_rate": 24
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,19 @@
+# Python dependencies for LevlStudio project
+
+# For VS Code debugging
+debugpy>=1.6.0
+
+# For AI integration (optional)
+openai>=0.27.0
+google-generativeai>=0.3.0
+
+# For local LLM support (optional)
+llama-cpp-python>=0.2.0
+
+# Development tools
+pylint>=2.15.0
+black>=22.10.0
+mypy>=0.991
+
+# Data processing
+numpy>=1.23.0

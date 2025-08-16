@@ -1,0 +1,64 @@
+# Blender
+*.blend1
+*.blend2
+*.blend3
+*.blend4
+*.blend5
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# VS Code
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/settings.json
+!.vscode/extensions.json
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Project specific
+/renders/*.png
+/renders/*.jpg
+/renders/*.exr
+/exports/*.fbx
+/exports/*.glb
+/exports/*.gltf
+/assets/fx/cache/*
+*.log
+*.tmp
+
+# Large files
+*.psd
+*.ai
+*.sketch
+*.fig
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# IDE
+.idea/
+*.swp
+*.swo

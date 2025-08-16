@@ -1,0 +1,43 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Attach to Blender",
+      "type": "python",
+      "request": "attach",
+      "connect": {
+        "host": "localhost",
+        "port": 5678
+      },
+      "pathMappings": [
+        {
+          "localRoot": "${workspaceFolder}",
+          "remoteRoot": "${workspaceFolder}"
+        }
+      ],
+      "justMyCode": false
+    },
+    {
+      "name": "Blender: Run Script",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "env": {
+        "PYTHONPATH": "/Applications/Blender.app/Contents/Resources/3.6/python/lib/python3.10"
+      }
+    },
+    {
+      "name": "Blender: Headless Test",
+      "type": "python",
+      "request": "launch",
+      "program": "/Applications/Blender.app/Contents/MacOS/Blender",
+      "args": [
+        "-b",
+        "--python",
+        "${file}"
+      ],
+      "console": "integratedTerminal"
+    }
+  ]
+}
