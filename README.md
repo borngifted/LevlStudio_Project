@@ -9,7 +9,7 @@
 ## 🚀 **Quick Start (30 seconds)**
 
 ```bash
-# Clone and install everything automatically
+# Clone the repository (requires password: Ibu/ubI)
 git clone git@github.com:borngifted/LevlStudio_Project.git
 cd LevlStudio_Project
 
@@ -20,13 +20,17 @@ python install_levlstudio.py
 python3 install_levlstudio.py
 ```
 
+> **🔒 Repository Access**: This repository is password protected for exclusive access. Use password: `Ibu/ubI`
+
 **What happens automatically:**
 - ✅ Cross-platform setup (Windows/macOS/Linux)
 - ✅ Python virtual environment with dependencies
-- ✅ ComfyUI with AI models and extensions
-- ✅ Blender addon installation
+- ✅ **ComfyUI complete installation** with AI models and extensions
+- ✅ **Essential custom nodes** (ControlNet, IPAdapter, Manager, VideoHelper)
+- ✅ Blender addon installation and configuration
 - ✅ Unreal Engine integration scripts
 - ✅ Auto-git system for continuous deployment
+- ✅ **Ready-to-use AI workflows** for immediate production
 
 ## 🎯 **What is LevlStudio?**
 
@@ -107,6 +111,33 @@ LevlStudio is a complete pipeline that connects the world's most powerful creati
 ### **Option B: Manual Installation**
 
 For detailed manual setup instructions, see: [**ONE_CLICK_SETUP.md**](ONE_CLICK_SETUP.md)
+
+### **Clone Repository Options**
+
+**🪟 Windows Users:**
+```cmd
+# SSH (Recommended)
+git clone git@github.com:borngifted/LevlStudio_Project.git
+
+# HTTPS Alternative
+git clone https://github.com/borngifted/LevlStudio_Project.git
+
+# GitHub Desktop (GUI Option)
+# Download from: https://desktop.github.com/
+```
+
+**🍎 macOS Users:**
+```bash
+# SSH (Recommended)
+git clone git@github.com:borngifted/LevlStudio_Project.git
+
+# HTTPS Alternative
+git clone https://github.com/borngifted/LevlStudio_Project.git
+
+# Using Homebrew
+brew install git
+git clone git@github.com:borngifted/LevlStudio_Project.git
+```
 
 ## 🎮 **Setting up Visual Studio Code for Unreal Engine**
 

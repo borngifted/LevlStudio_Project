@@ -48,7 +48,7 @@ xcode-select --install
 
 ### **Automatic Setup**
 ```bash
-# Clone and install everything automatically
+# Clone the repository (requires password: Ibu/ubI)
 git clone git@github.com:borngifted/LevlStudio_Project.git
 cd LevlStudio_Project
 
@@ -59,15 +59,52 @@ python install_levlstudio.py
 python3 install_levlstudio.py
 ```
 
+> **Note**: This repository is password protected. Use password: `Ibu/ubI`
+
+### **Alternative Clone Methods**
+
+**🪟 Windows (Multiple Options):**
+```cmd
+# Option 1: SSH (Recommended)
+git clone git@github.com:borngifted/LevlStudio_Project.git
+
+# Option 2: HTTPS
+git clone https://github.com/borngifted/LevlStudio_Project.git
+
+# Option 3: GitHub Desktop
+# - Download GitHub Desktop from https://desktop.github.com/
+# - Click "Clone from GitHub" and enter repository URL
+# - Navigate to folder and run installer
+```
+
+**🍎 macOS (Multiple Options):**
+```bash
+# Option 1: SSH (Recommended)
+git clone git@github.com:borngifted/LevlStudio_Project.git
+
+# Option 2: HTTPS
+git clone https://github.com/borngifted/LevlStudio_Project.git
+
+# Option 3: GitHub Desktop
+# - Download GitHub Desktop from https://desktop.github.com/
+# - Click "Clone from GitHub" and enter repository URL
+# - Navigate to folder and run installer
+
+# Option 4: Homebrew Git
+brew install git
+git clone git@github.com:borngifted/LevlStudio_Project.git
+```
+
 **What it does automatically:**
 - ✅ **Cross-platform setup** (Mac/Windows/Linux)
 - ✅ **Python virtual environment** with all dependencies
 - ✅ **ComfyUI installation** with required extensions
-- ✅ **Essential custom nodes** (ControlNet, IPAdapter, etc.)
-- ✅ **Blender addon** installation
+- ✅ **Essential custom nodes** (ControlNet, IPAdapter, Manager, etc.)
+- ✅ **Blender addon** installation and configuration
 - ✅ **Startup scripts** for easy launching
 - ✅ **Auto-git system** for automatic pushes
 - ✅ **Model folder structure** setup
+- ✅ **ComfyUI workspace configuration** with optimized workflows
 
 ### **2. Launch Applications**
 

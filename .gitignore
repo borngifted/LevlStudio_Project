@@ -71,3 +71,47 @@ client_secret_*.json
 .env.local
 .env.production
 config/secrets.json
+
+# ComfyUI Installation (downloaded by installer)
+ComfyUI/ComfyUI/
+ComfyUI/custom_nodes/*/
+ComfyUI/models/
+ComfyUI/output/
+ComfyUI/temp/
+ComfyUI/user/
+
+# Keep ComfyUI workflow templates and documentation
+!ComfyUI/WorkFlows/
+!ComfyUI/*.md
+!ComfyUI/custom_nodes/
+ComfyUI/custom_nodes/*
+!ComfyUI/custom_nodes/.gitkeep
+
+# AI Models and Large Files
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.onnx
+*.pkl
+
+# Generated Assets  
+ai_generated_assets/
+output/
+temp/
+
+# Configuration (contains local paths)
+levlstudio_config.json
+
+# Unreal Engine specific
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+.vs/
+*.opensdf
+*.sdf
+*.VC.db
+*.suo
+*.user

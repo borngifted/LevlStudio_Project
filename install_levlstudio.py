@@ -130,46 +130,58 @@ class LevlStudioInstaller:
         
         # Check if local ComfyUI exists
         local_comfyui = self.project_root / "ComfyUI"
-        if local_comfyui.exists():
-            print(f"✅ Using local ComfyUI at: {local_comfyui}")
-            self.comfyui_path = local_comfyui
+        local_comfyui_main = local_comfyui / "ComfyUI"
+        
+        if local_comfyui_main.exists() and (local_comfyui_main / "main.py").exists():
+            print(f"✅ Using local ComfyUI at: {local_comfyui_main}")
+            self.comfyui_path = local_comfyui_main
         else:
-            # Check if ComfyUI exists at detected path
-            if not self.comfyui_path.exists():
-                print(f"📥 ComfyUI not found at {self.comfyui_path}")
-                response = input("Would you like to download ComfyUI? (y/n): ")
-                if response.lower() == 'y':
-                    self.download_comfyui()
-                else:
-                    print("⚠️  ComfyUI features will be unavailable")
-                    return False
+            # Download ComfyUI automatically
+            print("📥 ComfyUI not found, downloading automatically...")
+            if not self.download_comfyui():
+                print("⚠️  ComfyUI features will be unavailable")
+                return False
         
         # Install ComfyUI extensions
         self.install_comfyui_extensions()
+        
+        # Copy workflows
+        self.setup_comfyui_workflows()
         return True
     
     def download_comfyui(self):
         """Download and set up ComfyUI"""
         print("📥 Downloading ComfyUI...")
         
-        # Create ComfyUI directory
-        comfyui_parent = self.comfyui_path.parent
-        comfyui_parent.mkdir(parents=True, exist_ok=True)
-        
-        # Clone ComfyUI repository
-        subprocess.run([
-            "git", "clone", "https://github.com/comfyanonymous/ComfyUI.git",
-            str(self.comfyui_path)
-        ], check=True)
-        
-        # Install ComfyUI requirements
-        requirements_file = self.comfyui_path / "requirements.txt"
-        if requirements_file.exists():
+        try:
+            # Create ComfyUI directory structure
+            local_comfyui = self.project_root / "ComfyUI"
+            local_comfyui.mkdir(exist_ok=True)
+            
+            comfyui_main = local_comfyui / "ComfyUI"
+            
+            # Clone ComfyUI repository
             subprocess.run([
-                sys.executable, "-m", "pip", "install", "-r", str(requirements_file)
+                "git", "clone", "https://github.com/comfyanonymous/ComfyUI.git",
+                str(comfyui_main)
             ], check=True)
-        
-        print("✅ ComfyUI downloaded and set up")
+            
+            # Update path reference
+            self.comfyui_path = comfyui_main
+            
+            # Install ComfyUI requirements
+            requirements_file = self.comfyui_path / "requirements.txt"
+            if requirements_file.exists():
+                subprocess.run([
+                    sys.executable, "-m", "pip", "install", "-r", str(requirements_file)
+                ], check=True)
+            
+            print("✅ ComfyUI downloaded and set up")
+            return True
+            
+        except Exception as e:
+            print(f"❌ Failed to download ComfyUI: {e}")
+            return False
     
     def install_comfyui_extensions(self):
         """Install required ComfyUI extensions"""
@@ -207,6 +219,29 @@ class LevlStudioInstaller:
                 print(f"✅ {ext['name']} already installed")
         
         print("✅ ComfyUI extensions installed")
+    
+    def setup_comfyui_workflows(self):
+        """Copy workflow files to ComfyUI"""
+        print("📋 Setting up ComfyUI workflows...")
+        
+        # Create workflows directory in ComfyUI
+        workflows_dir = self.comfyui_path / "user" / "default" / "workflows"
+        workflows_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Copy workflow files
+        workflow_sources = [
+            self.project_root / "workflow_results",
+            self.project_root / "comfy_workflows"
+        ]
+        
+        for source_dir in workflow_sources:
+            if source_dir.exists():
+                for workflow_file in source_dir.glob("*.json"):
+                    target_file = workflows_dir / workflow_file.name
+                    shutil.copy2(workflow_file, target_file)
+                    print(f"📋 Copied workflow: {workflow_file.name}")
+        
+        print("✅ ComfyUI workflows installed")
     
     def setup_blender_integration(self):
         """Set up Blender addon integration"""
