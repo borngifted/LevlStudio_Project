@@ -51,6 +51,40 @@ class LevlStudioInstaller:
         print(f"🎨 ComfyUI: {self.comfyui_path}")
         print()
     
+    def validate_access(self):
+        """Validate user has proper access authorization"""
+        print("🔐" + "=" * 60)
+        print("🔐 ACCESS CONTROL - AUTHORIZED USERS ONLY")
+        print("🔐" + "=" * 60)
+        print("📋 This installer contains proprietary AI workflows")
+        print("📋 and professional 3D content creation tools.")
+        print()
+        
+        max_attempts = 3
+        for attempt in range(max_attempts):
+            try:
+                password = input("🔑 Enter access password: ").strip()
+                
+                if password == "Ibu/ubI":
+                    print("✅ Access authorized - proceeding with installation...")
+                    print()
+                    return True
+                else:
+                    remaining = max_attempts - attempt - 1
+                    if remaining > 0:
+                        print(f"❌ Invalid password. {remaining} attempts remaining.")
+                        print("💡 Hint: Check your authorization documentation.")
+                    else:
+                        print("❌ Access denied - too many failed attempts.")
+                        print("🚫 Installation terminated for security.")
+                        print("📞 Contact repository owner for proper access.")
+                        
+            except KeyboardInterrupt:
+                print("\n🚫 Installation cancelled by user.")
+                return False
+        
+        return False
+    
     def check_prerequisites(self):
         """Check system prerequisites"""
         print("🔍 Checking Prerequisites...")
@@ -407,6 +441,10 @@ python3 launcher.py "$@"
     def install(self):
         """Run complete installation"""
         self.print_header()
+        
+        # Validate access first
+        if not self.validate_access():
+            return False
         
         if not self.check_prerequisites():
             print("❌ Prerequisites not met - installation aborted")

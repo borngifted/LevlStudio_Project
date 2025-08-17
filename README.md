@@ -3,24 +3,45 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-blue)](#platform-support)
 [![Python](https://img.shields.io/badge/Python-3.10+-green)](#prerequisites)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](#license)
+[![Access](https://img.shields.io/badge/Access-Password%20Protected-red)](#access-requirements)
 
 > **Complete AI-powered 3D content creation pipeline integrating Unreal Engine 5, ComfyUI, and Blender with one-click installation.**
 
+## 🔐 **Access Requirements**
+
+> ⚠️ **AUTHORIZED ACCESS ONLY**
+> 
+> This repository contains proprietary AI workflows and professional 3D assets.
+> **Access Password Required**: `Ibu/ubI`
+> 
+> By proceeding, you confirm you have authorization to use this system.
+
+**🛑 STOP**: Do not proceed without the access password. If you don't have the password, please contact the repository owner.
+
 ## 🚀 **Quick Start (30 seconds)**
 
+⚠️ **ACCESS CHECKPOINT**: Enter password to reveal installation commands.
+
+<details>
+<summary>🔐 <strong>Click here and enter password: Ibu/ubI</strong></summary>
+
 ```bash
-# Clone the repository (requires password: Ibu/ubI)
+# Clone the repository 
 git clone git@github.com:borngifted/LevlStudio_Project.git
 cd LevlStudio_Project
 
-# 🪟 Windows
+# 🪟 Windows - Enter password when prompted
 python install_levlstudio.py
 
-# 🍎 macOS/Linux  
+# 🍎 macOS/Linux - Enter password when prompted
 python3 install_levlstudio.py
 ```
 
-> **🔒 Repository Access**: This repository is password protected for exclusive access. Use password: `Ibu/ubI`
+> **✅ Access Granted**: You have successfully entered the access password.
+
+</details>
+
+🛑 **If you cannot see installation commands above**, you do not have proper access authorization.
 
 **What happens automatically:**
 - ✅ Cross-platform setup (Windows/macOS/Linux)
@@ -114,6 +135,9 @@ For detailed manual setup instructions, see: [**ONE_CLICK_SETUP.md**](ONE_CLICK_
 
 ### **Clone Repository Options**
 
+<details>
+<summary>🔐 <strong>Advanced Clone Methods (Password Required: Ibu/ubI)</strong></summary>
+
 **🪟 Windows Users:**
 ```cmd
 # SSH (Recommended)
@@ -138,6 +162,8 @@ git clone https://github.com/borngifted/LevlStudio_Project.git
 brew install git
 git clone git@github.com:borngifted/LevlStudio_Project.git
 ```
+
+</details>
 
 ## 🎮 **Setting up Visual Studio Code for Unreal Engine**
 
@@ -354,6 +380,9 @@ git commit -m "Your changes"
 
 ## 🚨 **Troubleshooting**
 
+<details>
+<summary>🔐 <strong>Access Support Documentation (Password: Ibu/ubI)</strong></summary>
+
 ### **Windows Issues**
 ```cmd
 # Check prerequisites
@@ -382,11 +411,20 @@ python3 install_levlstudio.py
 
 For detailed troubleshooting, see: [**ONE_CLICK_SETUP.md**](ONE_CLICK_SETUP.md#troubleshooting)
 
+</details>
+
 ## 📖 **Documentation**
 
+<details>
+<summary>🔐 <strong>Access Technical Documentation (Password: Ibu/ubI)</strong></summary>
+
 - **[ONE_CLICK_SETUP.md](ONE_CLICK_SETUP.md)** - Complete setup guide with platform-specific instructions
-- **[SETUP_INSTRUCTIONS.md](SETUP_INSTRUCTIONS.md)** - Quick start instructions
+- **[SETUP_INSTRUCTIONS.md](SETUP_INSTRUCTIONS.md)** - Quick start instructions  
 - **[COMPLETE_PROJECT_GUIDE.md](COMPLETE_PROJECT_GUIDE.md)** - Full technical documentation
+- **[REPOSITORY_ACCESS.md](REPOSITORY_ACCESS.md)** - Repository security and access control
+- **[ComfyUI/README.md](ComfyUI/README.md)** - ComfyUI integration documentation
+
+</details>
 
 ## 🤝 **Contributing**
 

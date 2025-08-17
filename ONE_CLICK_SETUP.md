@@ -1,5 +1,11 @@
 # 🚀 LevlStudio Complete Setup Guide
 
+> ⚠️ **AUTHORIZED ACCESS ONLY**  
+> **Access Password Required**: `Ibu/ubI`  
+> Professional 3D content creation system - Authorized users only.
+
+🛑 **CHECKPOINT**: You must have the access password to proceed with installation.
+
 ## **🔹 Step 1 — Install Core Prerequisites**
 
 ### **🪟 Windows Setup**
@@ -47,8 +53,11 @@ xcode-select --install
 ## **🔹 Step 2 — One-Click Installation**
 
 ### **Automatic Setup**
+<details>
+<summary>🔐 <strong>STEP 1: Enter Access Password (Ibu/ubI) to Reveal Commands</strong></summary>
+
 ```bash
-# Clone the repository (requires password: Ibu/ubI)
+# Clone the repository
 git clone git@github.com:borngifted/LevlStudio_Project.git
 cd LevlStudio_Project
 
@@ -59,9 +68,16 @@ python install_levlstudio.py
 python3 install_levlstudio.py
 ```
 
-> **Note**: This repository is password protected. Use password: `Ibu/ubI`
+> ✅ **Access Granted**: Installation commands revealed.
+
+</details>
+
+🛑 **Access Denied**: If you cannot see installation commands above, you are not authorized.
 
 ### **Alternative Clone Methods**
+
+<details>
+<summary>🔐 <strong>Advanced Setup Options (Password: Ibu/ubI)</strong></summary>
 
 **🪟 Windows (Multiple Options):**
 ```cmd
@@ -94,6 +110,8 @@ git clone https://github.com/borngifted/LevlStudio_Project.git
 brew install git
 git clone git@github.com:borngifted/LevlStudio_Project.git
 ```
+
+</details>
 
 **What it does automatically:**
 - ✅ **Cross-platform setup** (Mac/Windows/Linux)
@@ -223,6 +241,9 @@ pip install -r custom_nodes/ComfyUI_IPAdapter_plus/requirements.txt
 ---
 
 ## **🔹 Step 4 — Download AI Models**
+
+<details>
+<summary>🔐 <strong>Access AI Model Documentation (Password: Ibu/ubI)</strong></summary>
 
 ### **Create Model Folders**
 Make these folders inside `ComfyUI/models/`:

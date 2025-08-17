@@ -45,6 +45,28 @@ def start_auto_watcher():
     if watcher_file.exists():
         subprocess.run([sys.executable, str(watcher_file)])
 
+def validate_access():
+    """Validate user has proper access authorization"""
+    print("🔐" + "=" * 50)
+    print("🔐 LEVLSTUDIO ACCESS CONTROL")
+    print("🔐" + "=" * 50)
+    
+    try:
+        password = input("🔑 Enter access password to launch: ").strip()
+        
+        if password == "Ibu/ubI":
+            print("✅ Access authorized - launching LevlStudio...")
+            print()
+            return True
+        else:
+            print("❌ Access denied - invalid password.")
+            print("🚫 LevlStudio launch terminated.")
+            return False
+            
+    except KeyboardInterrupt:
+        print("\n🚫 Launch cancelled by user.")
+        return False
+
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="LevlStudio Launcher")
@@ -52,8 +74,13 @@ def main():
     parser.add_argument("--blender", action="store_true", help="Start Blender")
     parser.add_argument("--watcher", action="store_true", help="Start Auto Watcher")
     parser.add_argument("--all", action="store_true", help="Start all services")
+    parser.add_argument("--no-auth", action="store_true", help="Skip authentication (for automation)")
     
     args = parser.parse_args()
+    
+    # Validate access unless skipped for automation
+    if not args.no_auth and not validate_access():
+        return
     
     if args.comfyui or args.all:
         start_comfyui()
