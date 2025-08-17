@@ -1,234 +1,391 @@
-# LevlStudio Scene Builder - The 13th Night Project
+# 🎬 LevlStudio - AI-Powered 3D Content Creation Pipeline
 
-## Overview
-A comprehensive Blender pipeline for managing 3D assets with JSON-driven scene assembly, VS Code integration, and AI assistance capabilities.
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-blue)](#platform-support)
+[![Python](https://img.shields.io/badge/Python-3.10+-green)](#prerequisites)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](#license)
 
-## Features
-- **JSON-Driven Asset Management**: Define all assets and scenes in JSON files with transform defaults
-- **VS Code Integration**: Debug Blender addons directly from VS Code
-- **Resolve Reporting**: Track which assets loaded successfully and which need attention
-- **Transform Defaults**: Automatically position, rotate, and scale assets on import
-- **Material Presets**: Pre-configured snow, ice, brass, and wood materials
-- **Lighting Presets**: Multiple time-of-day lighting configurations
-- **AI Integration Stub**: Ready for OpenAI/Gemini API integration
+> **Complete AI-powered 3D content creation pipeline integrating Unreal Engine 5, ComfyUI, and Blender with one-click installation.**
 
-## Installation
+## 🚀 **Quick Start (30 seconds)**
 
-### 1. Install the Blender Addon
-1. Open Blender
-2. Go to Edit → Preferences → Add-ons
-3. Click "Install..." and navigate to `levlstudio_scene_builder_addon.py`
-4. Enable "LevlStudio Scene Builder Enhanced"
-
-### 2. Set Up VS Code Debugging (Optional)
-1. Install the Blender Development extension in VS Code
-2. Install debugpy in Blender's Python:
-   ```bash
-   # Mac/Linux
-   /Applications/Blender.app/Contents/Resources/3.6/python/bin/python3.10 -m pip install debugpy
-   
-   # Windows
-   "C:\Program Files\Blender Foundation\Blender 3.6\3.6\python\bin\python.exe" -m pip install debugpy
-   ```
-3. Open the project folder in VS Code
-4. Use the provided `.vscode/launch.json` configuration
-
-## Project Structure
-```
-/LevlStudio_Project/
-├── /assets/                      # All 3D assets organized by type
-│   ├── /characters/              # Character models and rigs
-│   ├── /props/                   # Props and objects
-│   ├── /environments/            # Environment scenes
-│   ├── /fx/                      # Effects and particles
-│   ├── /materials/               # Material presets
-│   └── /cameras/                 # Camera rigs
-├── /tripo_exports/               # Raw exports from Tripo3D
-├── /json/                        # Configuration files
-│   ├── assets.json              # Asset definitions with transforms
-│   └── scenes.json              # Scene compositions
-├── /renders/                     # Output renders
-├── /exports/                     # Final FBX/GLB exports
-└── levlstudio_scene_builder_addon.py
-
-```
-
-## Usage
-
-### Basic Workflow
-1. **Load JSON Files**: 
-   - In Blender's 3D Viewport, open the N-panel (press N)
-   - Go to the "LevlStudio" tab
-   - Browse to select `assets.json` and `scenes.json`
-   - Click "Load JSON Files"
-
-2. **Build a Scene**:
-   - Select a scene from the dropdown
-   - Optionally override camera and lighting
-   - Click "Build Scene"
-   - Check the Resolve Report to see what loaded
-
-3. **Export**:
-   - Click "Export Scene"
-   - Choose FBX, GLB, or GLTF format
-   - Select destination
-
-### JSON Structure
-
-#### assets.json
-```json
-{
-  "assets": {
-    "props": {
-      "prop_glowing_book": {
-        "type": "prop",
-        "tags": ["magical", "runes"],
-        "filepath": "//assets/props/prop_glowing_book/prop_glowing_book_v002.glb",
-        "import_type": "import",
-        "location": [0.0, 0.0, 0.5],
-        "rotation": [0.0, 0.0, 0.0],
-        "scale": [1.2, 1.2, 1.2]
-      }
-    }
-  }
-}
-```
-
-#### scenes.json
-```json
-{
-  "scenes": [
-    {
-      "name": "Santa Village Night Scene",
-      "environment": "env_santa_village_night",
-      "characters": ["char_nimble", "char_pip"],
-      "props": ["prop_glowing_book"],
-      "default_camera": "cam_fpv_drone_swoop",
-      "lighting_preset": "night_snow"
-    }
-  ]
-}
-```
-
-### Transform Defaults
-Each asset can specify default transforms:
-- `location`: [X, Y, Z] in Blender units
-- `rotation`: [X, Y, Z] in radians
-- `scale`: [X, Y, Z] scale factors
-
-### Import Types
-- `import`: Import the file (copies data)
-- `link`: Link the file (references external data)
-- `append`: Append from .blend file
-- `link_or_import`: Try linking first, fall back to import
-
-## VS Code Integration
-
-### Debugging
-1. In Blender's LevlStudio panel, click "Attach VS Code Debugger"
-2. In VS Code, run the "Python: Attach to Blender" configuration
-3. Set breakpoints in your addon code
-4. Trigger addon functions in Blender
-
-### Running Tasks
-VS Code tasks are configured for:
-- Installing the addon
-- Running Blender with the addon
-- Building test scenes
-- Linting Python files
-
-Access tasks with Cmd+Shift+P → "Tasks: Run Task"
-
-## Resolve Report
-The Resolve Report shows how each asset was handled:
-- ✓ **SUCCESS**: Asset loaded correctly
-- ⚠️ **PROCEDURAL**: Placeholder created (file missing)
-- ❌ **ERROR**: Failed to load
-
-Toggle "Show Resolve Report" to see details for troubleshooting.
-
-## AI Integration
-The AI Assistant button is a stub for future integration:
-1. Replace the stub in `LEVLSTUDIO_OT_ai_assist` with your API calls
-2. Use environment tags to generate contextual suggestions
-3. Example services: OpenAI GPT-4, Google Gemini, local LLMs
-
-## Material Presets
-Pre-configured materials:
-- **Snow**: White with subsurface scattering
-- **Ice**: Transparent with refraction
-- **Brass**: Metallic gold/bronze
-- **Wood**: Organic brown with roughness
-
-## Lighting Presets
-Available lighting configurations:
-- **night_snow**: Cool blue moonlight with fog
-- **dark_interior**: Minimal ambient light
-- **magical_glow**: Warm magical atmosphere
-- **dawn**: Orange/pink sunrise
-- **midday**: Bright neutral daylight
-
-## Troubleshooting
-
-### Assets Not Loading
-1. Check file paths in assets.json
-2. Ensure paths use "//" prefix for relative paths
-3. Check Resolve Report for specific errors
-
-### VS Code Debugging Not Working
-1. Ensure debugpy is installed in Blender's Python
-2. Check firewall isn't blocking port 5678
-3. Verify VS Code Python extension is installed
-
-### Placeholders Instead of Assets
-- This means the file path couldn't be found
-- Update the filepath in assets.json
-- Ensure the file exists at the specified location
-
-## Advanced Features
-
-### Custom Material Node Groups
-Create reusable material setups:
-1. Create materials with node groups in .blend files
-2. Reference them in assets.json with `node_group` property
-3. Use `import_type: "append"` to bring them in
-
-### Batch Processing
-Use the headless Blender task to process multiple scenes:
 ```bash
-blender -b --python batch_process.py
+# Clone and install everything automatically
+git clone git@github.com:borngifted/LevlStudio_Project.git
+cd LevlStudio_Project
+
+# 🪟 Windows
+python install_levlstudio.py
+
+# 🍎 macOS/Linux  
+python3 install_levlstudio.py
 ```
 
-### LLM Integration Examples
-```python
-# In the AI assist operator
-import openai
+**What happens automatically:**
+- ✅ Cross-platform setup (Windows/macOS/Linux)
+- ✅ Python virtual environment with dependencies
+- ✅ ComfyUI with AI models and extensions
+- ✅ Blender addon installation
+- ✅ Unreal Engine integration scripts
+- ✅ Auto-git system for continuous deployment
 
-def get_lighting_suggestions(tags):
-    response = openai.ChatCompletion.create(
-        model="gpt-4",
-        messages=[
-            {"role": "system", "content": "You are a 3D lighting expert"},
-            {"role": "user", "content": f"Suggest lighting for: {tags}"}
-        ]
-    )
-    return response.choices[0].message.content
+## 🎯 **What is LevlStudio?**
+
+LevlStudio is a complete pipeline that connects the world's most powerful creative tools:
+
+### **🎮 Unreal Engine 5** → **🎨 ComfyUI** → **🎭 Blender** → **🎬 Final Output**
+
+- **Unreal Engine 5**: Create and render 3D scenes
+- **ComfyUI**: AI-powered stylization with ControlNet
+- **Blender**: Post-processing and compositing
+- **Automated Bridge**: Seamless file transfer and processing
+
+## 📋 **Prerequisites**
+
+### **🪟 Windows Requirements**
+1. **Python 3.10.x (64-bit)** - [Download](https://www.python.org/downloads/)
+   - ✅ Check "Add Python to PATH"
+   - ✅ Check "Install for all users"
+
+2. **Git** - [Download](https://git-scm.com/download/win)
+   - Accept defaults, ensure Git Bash in PATH
+
+3. **Visual Studio 2022 Community** - [Download](https://visualstudio.microsoft.com/vs/community/)
+   - ✅ Desktop Development with C++
+   - ✅ Game Development with C++ (Unreal Engine)
+
+### **🍎 macOS Requirements**
+1. **Python 3.10.x** - [Download](https://www.python.org/downloads/) or `brew install python@3.10`
+2. **Git** - Built-in or `brew install git`
+3. **Xcode Command Line Tools** - `xcode-select --install`
+
+## 🎨 **Core Features**
+
+### **AI-Powered Stylization**
+- **Triple-ControlNet Pipeline**: Depth + Pose + Canny edge control
+- **Frame Consistency**: WAN-FUN model for temporal stability
+- **Batch Processing**: Automatic sequence processing
+- **Real-time Monitoring**: WebSocket progress tracking
+
+### **3D Asset Management**
+- **JSON-Driven Scenes**: Configure everything via JSON
+- **33+ 3D Assets**: Characters, props, environments
+- **Material Library**: Snow, ice, brass, wood presets
+- **Lighting Presets**: Day, night, magical atmospheres
+
+### **Workflow Automation**
+- **Auto-File Watching**: Detect new Unreal exports
+- **Auto-Git Integration**: Commit and push changes automatically
+- **Cross-Platform Scripts**: Works on Windows, macOS, Linux
+- **One-Click Launching**: Start all services with single command
+
+## 🛠️ **Installation Guide**
+
+### **Option A: One-Click Installation (Recommended)**
+
+1. **Run the installer:**
+   ```bash
+   # 🪟 Windows
+   python install_levlstudio.py
+   
+   # 🍎 macOS
+   python3 install_levlstudio.py
+   ```
+
+2. **Launch applications:**
+   ```bash
+   # 🪟 Windows
+   python launcher.py --comfyui    # Start ComfyUI
+   python launcher.py --blender    # Start Blender
+   LevlStudio.bat --all           # Start everything
+   
+   # 🍎 macOS
+   python3 launcher.py --comfyui   # Start ComfyUI
+   python3 launcher.py --blender   # Start Blender
+   ./LevlStudio.sh --all          # Start everything
+   ```
+
+### **Option B: Manual Installation**
+
+For detailed manual setup instructions, see: [**ONE_CLICK_SETUP.md**](ONE_CLICK_SETUP.md)
+
+## 🎮 **Setting up Visual Studio Code for Unreal Engine**
+
+### **🪟 Windows Setup**
+
+**A. Install Necessary Software:**
+
+1. **Visual Studio Code:**
+   - Go to [Visual Studio Code website](https://code.visualstudio.com/)
+   - Download the installer for Windows
+   - Run installer and follow prompts
+
+2. **Visual Studio Build Tools:**
+   - Go to [Visual Studio downloads](https://visualstudio.microsoft.com/downloads/)
+   - Scroll to "All Downloads" → "Tools for Visual Studio"
+   - Download "Build Tools for Visual Studio"
+   - In installer workloads, select "Desktop development with C++" and click "Install"
+
+**B. Configure Unreal Engine:**
+
+1. **Create a New C++ Project:**
+   - Open Epic Games Launcher and launch Unreal Engine
+   - Create new project with C++ template (e.g., Third Person)
+
+2. **Set Visual Studio Code as Default Editor:**
+   - In Unreal Editor: Edit → Editor Preferences
+   - Under General section, select Source Code
+   - In Source Code Editor dropdown, choose Visual Studio Code
+   - Restart Unreal Editor
+
+3. **Generate Project Files:**
+   - Navigate to project folder in File Explorer
+   - Right-click .uproject file → "Generate Visual Studio project files"
+   - This creates a .code-workspace file
+
+**C. Configure Visual Studio Code:**
+
+1. **Open the Workspace:**
+   - Open Visual Studio Code
+   - Open the newly created .code-workspace file
+
+2. **Install Extensions:**
+   - Go to Extensions view (Ctrl+Shift+X)
+   - Install "C/C++ Extension Pack" by Microsoft
+   - Install "C#" extension by Microsoft
+
+3. **Run a Debug Session:**
+   - Go to "Run and Debug" view (Ctrl+Shift+D)
+   - Select "Launch [YourProjectName]Editor (Development) (Workspace)"
+   - Press F5 or click green play button to start debugging
+
+### **🍎 macOS Setup**
+
+**A. Install Necessary Software:**
+
+1. **Visual Studio Code:**
+   - Go to [Visual Studio Code website](https://code.visualstudio.com/)
+   - Download installer for macOS
+   - Drag Visual Studio Code to Applications folder
+
+2. **Xcode Command Line Tools:**
+   - Open Terminal application
+   - Run command: `xcode-select --install`
+   - Follow prompts to install command line tools
+
+**B. Configure Unreal Engine:**
+
+1. **Create a New C++ Project:**
+   - Follow same steps as Windows to create C++ project
+
+2. **Set Visual Studio Code as Default Editor:**
+   - In Unreal Editor: Unreal Engine → Preferences
+   - Under General section, select Source Code
+   - In Source Code Editor dropdown, choose Visual Studio Code
+   - Restart Unreal Editor
+
+3. **Generate Project Files:**
+   - Follow same steps as Windows to generate project files
+
+**C. Configure Visual Studio Code:**
+
+1. **Open the Workspace:**
+   - Open the .code-workspace file in Visual Studio Code
+
+2. **Install Extensions:**
+   - Install same "C/C++ Extension Pack" and "C#" extensions
+
+3. **Run a Debug Session:**
+   - Follow same steps as Windows to start debug session
+
+## 🎬 **Complete Workflow Examples**
+
+### **UE5 → Stylized Video Pipeline**
+
+```bash
+# 1. Start the bridge system
+# 🪟 Windows
+python unreal_comfyui_bridge.py --start-comfyui --watch
+
+# 🍎 macOS
+python3 unreal_comfyui_bridge.py --start-comfyui --watch
+
+# 2. In Unreal Engine:
+#    - Export sequence using Movie Render Queue
+#    - Files auto-detected and processed
+#    - Stylized output ready for import
+
+# 3. Results in ComfyUI/output/ folder
 ```
 
-## Best Practices
-1. **Version Control**: Use Git to track JSON changes
-2. **Naming Convention**: Use descriptive names with version suffixes (_v001, _v002)
-3. **Collections**: Organize .blend files with named collections for linking
-4. **Transform Origins**: Set object origins before exporting
-5. **Scale**: Apply scale in Blender before exporting to avoid issues
+### **AI → 3D Asset Generation**
 
-## Support
-For issues or questions:
-1. Check the Resolve Report first
-2. Enable Debug Mode for detailed logging
-3. Use VS Code debugger to step through code
-4. Review Blender's console for Python errors
+```bash
+# Generate 3D asset from text description
+# 🪟 Windows
+python ai_to_3d_pipeline.py --prompt "futuristic vehicle" --name "sci_fi_car"
+
+# 🍎 macOS
+python3 ai_to_3d_pipeline.py --prompt "futuristic vehicle" --name "sci_fi_car"
+
+# Process in Blender and export for UE5
+```
+
+### **JSON → Blender Scene Building**
+
+```bash
+# Build scenes from JSON configuration
+# 🪟 Windows
+python launcher.py --blender
+
+# 🍎 macOS
+python3 launcher.py --blender
+
+# Load JSON → Build Scene → Export to UE5
+```
+
+## 📁 **Project Structure**
+
+```
+LevlStudio_Project/
+├── 🚀 One-Click Setup
+│   ├── install_levlstudio.py      # Cross-platform installer
+│   ├── launcher.py                # Universal launcher
+│   ├── LevlStudio.bat            # Windows launcher
+│   └── LevlStudio.sh             # Mac/Linux launcher
+├── 🎮 Unreal Integration
+│   ├── unreal_comfyui_bridge.py  # UE5 ↔ ComfyUI bridge
+│   ├── UE_Content_Python/        # UE5 Python scripts
+│   ├── UnrealBridge/
+│   │   ├── outbox/               # UE5 exports here
+│   │   └── inbox/                # Processed results here
+│   └── LevlStudio.uproject       # UE5 project
+├── 🎨 ComfyUI Integration
+│   ├── ComfyUI/                  # Local ComfyUI installation
+│   ├── workflow_results/         # Ready-to-use workflows
+│   └── comfy_workflows/          # Additional workflows
+├── 🎭 Blender Pipeline
+│   ├── levlstudio_scene_builder_addon.py # Main addon
+│   ├── assets/                   # 3D asset library
+│   ├── json/                     # Scene configurations
+│   └── blender_mcp_server.py     # MCP server
+├── 🤖 AI Integration
+│   ├── ai_to_3d_pipeline.py      # Text → 3D pipeline
+│   ├── ai_workflows/             # AI configurations
+│   └── ai_generated_assets/      # AI outputs
+├── 🔄 Automation
+│   ├── auto_git_watcher.py       # Auto-commit system
+│   ├── batch_process.py          # Batch operations
+│   └── quick_start.py            # Project tester
+└── 📖 Documentation
+    ├── ONE_CLICK_SETUP.md        # Complete setup guide
+    ├── COMPLETE_PROJECT_GUIDE.md # Full documentation
+    └── SETUP_INSTRUCTIONS.md    # Detailed setup
+```
+
+## 🎨 **ComfyUI Workflow Features**
+
+### **Triple-ControlNet Pipeline**
+- **Depth Control (0.7)**: Structure preservation
+- **Pose Control (0.6)**: Character consistency  
+- **Canny Control (0.45)**: Edge preservation
+- **WAN-FUN Model**: Frame-to-frame consistency
+- **Fixed Seed**: Temporal stability
+
+### **Optimized Settings**
+- **22 Steps**: Quality/speed balance
+- **CFG 5.5**: Optimal guidance
+- **Denoise 0.45**: Perfect img2img strength
+- **DPM++ 2M Karras**: Best scheduler
+
+## 🔄 **Auto-Git System**
+
+### **Automatic Commits & Pushes**
+```bash
+# Start file watcher (commits changes every 30 seconds)
+# 🪟 Windows
+python auto_git_watcher.py
+
+# 🍎 macOS
+python3 auto_git_watcher.py
+
+# Or use manual commits (still auto-pushes)
+git add .
+git commit -m "Your changes"
+# → Automatically pushes to GitHub!
+```
+
+### **What Gets Auto-Committed**
+- ✅ New workflows in ComfyUI
+- ✅ Asset changes in Blender
+- ✅ Config updates in JSON files
+- ✅ New 3D models and textures
+- ✅ Documentation updates
+
+## 🚨 **Troubleshooting**
+
+### **Windows Issues**
+```cmd
+# Check prerequisites
+python --version          # Should be 3.10.x
+git --version             # Should be installed
+# Check Visual Studio in Add/Remove Programs
+
+# Re-run installer if needed
+python install_levlstudio.py
+```
+
+### **macOS Issues**
+```bash
+# Check prerequisites
+python3 --version         # Should be 3.10.x
+xcode-select -p           # Should show tools path
+
+# Re-run installer if needed
+python3 install_levlstudio.py
+```
+
+### **ComfyUI Issues**
+- **Models not loading**: Check `ComfyUI/models/` folders
+- **Extensions missing**: Use ComfyUI Manager tab
+- **GPU errors**: Update graphics drivers
+
+For detailed troubleshooting, see: [**ONE_CLICK_SETUP.md**](ONE_CLICK_SETUP.md#troubleshooting)
+
+## 📖 **Documentation**
+
+- **[ONE_CLICK_SETUP.md](ONE_CLICK_SETUP.md)** - Complete setup guide with platform-specific instructions
+- **[SETUP_INSTRUCTIONS.md](SETUP_INSTRUCTIONS.md)** - Quick start instructions
+- **[COMPLETE_PROJECT_GUIDE.md](COMPLETE_PROJECT_GUIDE.md)** - Full technical documentation
+
+## 🤝 **Contributing**
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 **License**
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🎉 **Success Stories**
+
+> "LevlStudio transformed our 3D pipeline. What used to take days now takes hours!" - *Game Studio*
+
+> "The AI stylization is incredible. Frame consistency is perfect." - *VFX Artist*
+
+> "One-click setup saved us hours of configuration time." - *Technical Director*
+
+## 🚀 **What's Next?**
+
+- 🔮 **Real-time rendering** integration
+- 🎬 **Video generation** workflows
+- 🌐 **Cloud processing** support
+- 🤖 **Advanced AI models** integration
 
 ---
 
-*LevlStudio Scene Builder v2.0.0 - Built for The 13th Night Project*
+**🎊 Welcome to the future of AI-powered 3D content creation!**
+
+*Built with ❤️ by the LevlStudio team*

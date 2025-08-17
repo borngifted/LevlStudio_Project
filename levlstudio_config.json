@@ -1,0 +1,11 @@
+{
+  "platform": "Darwin",
+  "project_root": "/Volumes/Jul_23_2025/LevlStudio_Project",
+  "comfyui_path": "/Volumes/Jul_23_2025/LevlStudio_Project/ComfyUI",
+  "blender_paths": [
+    "/Applications/Blender.app/Contents/MacOS/Blender"
+  ],
+  "python_executable": "/Volumes/Jul_23_2025/LevlStudio_Project/.venv/bin/python3",
+  "installation_date": "1755447569.4677708",
+  "version": "2.0.0"
+}
