@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "unrealMCP": {
+      "command": "uv",
+      "args": [
+        "--directory", 
+        "/Volumes/Jul_23_2025/LevlStudio_Project/Python_UnrealMCP",
+        "run", 
+        "unreal_mcp_server_advanced.py"
+      ]
+    },
+    "levlstudio": {
+      "command": "python",
+      "args": [
+        "/Volumes/Jul_23_2025/LevlStudio_Project/levl_mcp_server.py"
+      ]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "@modelcontextprotocol/server-filesystem",
+        "/Volumes/Jul_23_2025/LevlStudio_Project"
+      ]
+    }
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "unreal_engine": {
+    "mesh_formats": {
+      "primary": "fbx",
+      "secondary": ["obj", "glb", "gltf"],
+      "compression": {
+        "enabled": true,
+        "level": "medium"
+      }
+    },
+    "materials": {
+      "format": "ue_material",
+      "shader_model": "phong",
+      "texture_resolution": {
+        "diffuse": 2048,
+        "normal": 2048,
+        "roughness": 1024,
+        "metallic": 1024
+      },
+      "auto_generate_lods": true
+    },
+    "animation": {
+      "camera_path": {
+        "enabled": true,
+        "format": "sequencer",
+        "fps": 25,
+        "interpolation": "bezier"
+      },
+      "object_animation": {
+        "enabled": false,
+        "format": "skeletal_mesh"
+      }
+    },
+    "lighting": {
+      "import_mode": "lightmap",
+      "auto_build_lighting": true,
+      "lightmap_resolution": 512,
+      "use_area_lights": true
+    },
+    "level_generation": {
+      "create_level": true,
+      "level_template": "basic",
+      "auto_place_actors": true,
+      "create_blueprints": true
+    },
+    "optimization": {
+      "merge_similar_meshes": true,
+      "remove_duplicate_materials": true,
+      "optimize_for_mobile": false,
+      "generate_collisions": true
+    }
+  },
+  "blender": {
+    "scene_setup": {
+      "units": "metric",
+      "scale_factor": 1.0,
+      "coordinate_system": "z_up"
+    },
+    "mesh_processing": {
+      "subdivision_level": 2,
+      "smooth_shading": true,
+      "remove_doubles": true,
+      "recalculate_normals": true
+    },
+    "materials": {
+      "use_nodes": true,
+      "shader_type": "principled_bsdf",
+      "auto_texture_mapping": true,
+      "material_slots_cleanup": true
+    },
+    "rendering": {
+      "engine": "cycles",
+      "samples": 128,
+      "resolution": [1920, 1080],
+      "file_format": "PNG"
+    },
+    "export_formats": ["blend", "fbx", "obj", "glb"],
+    "animation": {
+      "frame_rate": 25,
+      "export_cameras": true,
+      "export_lights": true,
+      "bake_animation": false
+    }
+  },
+  "generic": {
+    "mesh_formats": ["obj", "ply", "stl"],
+    "texture_formats": ["png", "jpg", "tiff"],
+    "point_cloud_formats": ["ply", "pcd", "xyz"],
+    "animation_formats": ["bvh", "csv"],
+    "metadata_format": "json",
+    "coordinate_system": "right_handed",
+    "units": "meters"
+  },
+  "quality_presets": {
+    "low": {
+      "mesh_resolution": 0.5,
+      "texture_resolution": 512,
+      "polygon_reduction": 0.7,
+      "compression": "high"
+    },
+    "medium": {
+      "mesh_resolution": 1.0,
+      "texture_resolution": 1024,
+      "polygon_reduction": 0.5,
+      "compression": "medium"
+    },
+    "high": {
+      "mesh_resolution": 1.5,
+      "texture_resolution": 2048,
+      "polygon_reduction": 0.3,
+      "compression": "low"
+    },
+    "ultra": {
+      "mesh_resolution": 2.0,
+      "texture_resolution": 4096,
+      "polygon_reduction": 0.1,
+      "compression": "none"
+    }
+  },
+  "processing_options": {
+    "depth_estimation": {
+      "model": "dpt-large",
+      "confidence_threshold": 0.5,
+      "smoothing": true
+    },
+    "object_detection": {
+      "model": "detr-resnet-50",
+      "confidence_threshold": 0.6,
+      "nms_threshold": 0.5
+    },
+    "mesh_reconstruction": {
+      "algorithm": "poisson",
+      "depth": 9,
+      "point_weight": 4.0,
+      "mesh_cleaning": true
+    },
+    "texture_synthesis": {
+      "method": "neural_texture",
+      "resolution": 1024,
+      "seamless": true,
+      "color_correction": true
+    }
+  }
+}

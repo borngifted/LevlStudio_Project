@@ -1,11 +1,17 @@
-# 🎬 LevlStudio - AI-Powered 3D Content Creation Pipeline
+# 🎬 LevlStudio + Unreal Engine MCP Integration
 
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-blue)](#platform-support)
 [![Python](https://img.shields.io/badge/Python-3.10+-green)](#prerequisites)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](#license)
 [![Access](https://img.shields.io/badge/Access-Password%20Protected-red)](#access-requirements)
+[![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.5%2B-orange.svg)](https://www.unrealengine.com/)
 
-> **Complete AI-powered 3D content creation pipeline integrating Unreal Engine 5, ComfyUI, and Blender with one-click installation.**
+> **Complete AI-powered 3D content creation pipeline integrating Unreal Engine 5 MCP, ComfyUI, and Blender with one-click installation and natural language control.**
+
+## 🔐 **Access Requirements**
+
+> ⚠️ **AUTHORIZED ACCESS ONLY**
+>
 > This repository contains proprietary AI workflows and professional 3D assets.
 > By proceeding, you confirm you have authorization to use this system.
 
@@ -92,6 +98,20 @@ LevlStudio is a complete pipeline that connects the world's most powerful creati
 - **Cross-Platform Scripts**: Works on Windows, macOS, Linux
 - **One-Click Launching**: Start all services with single command
 
+### **🎮 Unreal Engine MCP Integration**
+- **Natural Language Control**: Control Unreal Engine with AI commands
+- **Advanced Building Tools**: Create towns, castles, mazes with AI
+- **Blueprint System**: Visual scripting and custom actor creation
+- **Physics Simulation**: Realistic physics properties and interactions
+- **Real-time Communication**: TCP socket connection for instant commands
+
+### **🌍 Hunyuan-GameCraft Integration**
+- **AI World Building**: Generate interactive game environments from text prompts
+- **Interactive Video Generation**: Create explorable worlds with WASD controls
+- **3D Scene Reconstruction**: Convert GameCraft videos to 3D assets
+- **Automatic Unreal Import**: Seamless integration with existing pipeline
+- **High-Quality Output**: 704x1216 resolution at 25fps with realistic physics
+
 ## 🛠️ **Installation Guide**
 
 ### **Option A: One-Click Installation (Recommended)**
@@ -153,6 +173,129 @@ git clone git@github.com:borngifted/LevlStudio_Project.git
 ```
 
 </details>
+
+## 🚀 **Complete MCP System Launch**
+
+### **Quick Launch (All Services)**
+```bash
+# Start complete LevlStudio + Unreal MCP system
+./start_complete_mcp_system.sh
+```
+
+### **Individual Service Control**
+```bash
+# Start only LevlStudio services
+./LevlStudio.sh
+
+# Start only Unreal MCP
+cd Python_UnrealMCP && uv run unreal_mcp_server_advanced.py
+```
+
+### **MCP Client Configuration**
+
+Add to your Claude Desktop, Cursor, or Windsurf MCP configuration:
+
+**File Location:**
+- **Claude Desktop**: `~/.config/claude-desktop/mcp.json`
+- **Cursor**: `.cursor/mcp.json`
+- **Windsurf**: `~/.config/windsurf/mcp.json`
+
+**Configuration (copy from `mcp_config_complete.json`):**
+```json
+{
+  "mcpServers": {
+    "unrealMCP": {
+      "command": "uv",
+      "args": [
+        "--directory", 
+        "/path/to/your/LevlStudio_Project/Python_UnrealMCP",
+        "run", 
+        "unreal_mcp_server_advanced.py"
+      ]
+    },
+    "levlstudio": {
+      "command": "python",
+      "args": ["/path/to/your/LevlStudio_Project/levl_mcp_server.py"]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "@modelcontextprotocol/server-filesystem",
+        "/path/to/your/LevlStudio_Project"
+      ]
+    }
+  }
+}
+```
+
+### **System Health Check**
+The launch script automatically verifies:
+- ✅ ComfyUI server (port 8199)
+- ✅ MCP filesystem server
+- ✅ Blender with LevlStudio addon
+- ✅ LevlStudio MCP server
+- ✅ Unreal Engine MCP server
+
+**Stop all services:**
+```bash
+./stop_complete_mcp_system.sh
+```
+
+**Monitor logs:**
+```bash
+# View all service logs
+ls -la logs/
+tail -f logs/unreal_mcp_server.log
+```
+
+## 🌍 **GameCraft World Building Setup**
+
+### **Environment Setup**
+```bash
+# Setup GameCraft environment (one-time setup)
+./setup_gamecraft_environment.sh
+
+# Activate GameCraft environment
+source activate_gamecraft.sh
+
+# Test integration
+python3 test_gamecraft_integration.py
+```
+
+### **Generate Game Worlds**
+```bash
+# Generate medieval village
+python gamecraft_integration/pipeline_manager.py \
+  --gamecraft-path "./Hunyuan-GameCraft-1.0" \
+  --prompt "Medieval village with cobblestone streets and thatched houses" \
+  --world-type "medieval_village" \
+  --quality "medium"
+
+# Generate futuristic city
+python gamecraft_integration/pipeline_manager.py \
+  --gamecraft-path "./Hunyuan-GameCraft-1.0" \
+  --prompt "Futuristic city with neon lights and flying cars" \
+  --world-type "futuristic_city" \
+  --quality "high"
+```
+
+### **Available World Presets**
+- `medieval_village` - Charming village with cobblestone streets
+- `futuristic_city` - Sci-fi city with neon lights and skyscrapers  
+- `mystical_forest` - Magical forest with glowing mushrooms
+- `desert_oasis` - Desert oasis with palm trees and ruins
+- `space_station` - Advanced space station with Earth view
+- `haunted_mansion` - Gothic mansion with eerie atmosphere
+
+### **🎯 Ready to Use**
+
+Once all services are running, you can use natural language commands like:
+- *"Create a medieval castle with towers and walls"*
+- *"Generate a town square with fountain and buildings"*
+- *"Make a challenging maze for players to solve"*
+- *"Build a futuristic city with skyscrapers"*
+- *"Generate an interactive medieval village world"*
+- *"Create an underwater city with coral buildings"*
 
 ## 🎮 **Setting up Visual Studio Code for Unreal Engine**
 

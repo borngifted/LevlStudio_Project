@@ -1,0 +1,102 @@
+{
+  "medieval_village": {
+    "name": "Medieval Village",
+    "description": "Charming medieval village with cobblestone streets and thatched-roof houses",
+    "prompt": "A charming medieval village with cobblestone streets, thatched-roof houses, and vibrant flower gardens under a bright blue sky",
+    "actions": ["w", "s", "d", "a"],
+    "action_speeds": [0.2, 0.2, 0.2, 0.2],
+    "cfg_scale": 2.0,
+    "inference_steps": 50,
+    "tags": ["medieval", "village", "fantasy", "architecture"]
+  },
+  "futuristic_city": {
+    "name": "Futuristic City",
+    "description": "Sci-fi city with neon lights, flying cars, and skyscrapers",
+    "prompt": "Futuristic city with neon lights, flying cars, towering skyscrapers, and holographic advertisements in a cyberpunk setting",
+    "actions": ["w", "w", "s", "s", "d", "d", "a", "a"],
+    "action_speeds": [0.3, 0.3, 0.2, 0.2, 0.25, 0.25, 0.25, 0.25],
+    "cfg_scale": 2.0,
+    "inference_steps": 50,
+    "tags": ["futuristic", "cyberpunk", "city", "sci-fi"]
+  },
+  "mystical_forest": {
+    "name": "Mystical Forest",
+    "description": "Magical forest with glowing mushrooms and ancient trees",
+    "prompt": "Mystical forest with glowing mushrooms, ancient trees, magical particles, and ethereal lighting filtering through the canopy",
+    "actions": ["w", "a", "w", "d", "s", "d", "w", "a"],
+    "action_speeds": [0.15, 0.15, 0.15, 0.15, 0.1, 0.15, 0.15, 0.15],
+    "cfg_scale": 2.5,
+    "inference_steps": 60,
+    "tags": ["fantasy", "forest", "mystical", "nature"]
+  },
+  "desert_oasis": {
+    "name": "Desert Oasis",
+    "description": "Peaceful oasis in vast desert with palm trees and ancient ruins",
+    "prompt": "Desert oasis with palm trees, crystal clear water, ancient ruins, and golden sand dunes under a sunset sky",
+    "actions": ["w", "s", "w", "a", "d", "w"],
+    "action_speeds": [0.2, 0.2, 0.2, 0.3, 0.3, 0.2],
+    "cfg_scale": 2.0,
+    "inference_steps": 50,
+    "tags": ["desert", "oasis", "ancient", "nature"]
+  },
+  "underwater_city": {
+    "name": "Underwater City",
+    "description": "Submerged city with coral buildings and marine life",
+    "prompt": "Underwater city with coral-covered buildings, bioluminescent plants, schools of fish, and ethereal blue lighting",
+    "actions": ["w", "a", "s", "d", "w", "d"],
+    "action_speeds": [0.1, 0.15, 0.1, 0.15, 0.1, 0.15],
+    "cfg_scale": 2.2,
+    "inference_steps": 55,
+    "tags": ["underwater", "city", "marine", "fantasy"]
+  },
+  "mountain_fortress": {
+    "name": "Mountain Fortress",
+    "description": "Fortress carved into mountain peaks with defensive walls",
+    "prompt": "Mountain fortress carved into rocky peaks with stone walls, watchtowers, and dramatic mountain vistas",
+    "actions": ["w", "w", "a", "d", "s", "w"],
+    "action_speeds": [0.25, 0.25, 0.2, 0.2, 0.15, 0.25],
+    "cfg_scale": 2.0,
+    "inference_steps": 50,
+    "tags": ["mountain", "fortress", "medieval", "defensive"]
+  },
+  "space_station": {
+    "name": "Space Station",
+    "description": "Advanced space station with Earth view and docking bays",
+    "prompt": "Advanced space station with sleek corridors, observation decks viewing Earth, docking bays, and holographic displays",
+    "actions": ["w", "s", "a", "d", "w", "s"],
+    "action_speeds": [0.2, 0.2, 0.3, 0.3, 0.2, 0.2],
+    "cfg_scale": 2.0,
+    "inference_steps": 50,
+    "tags": ["space", "sci-fi", "station", "futuristic"]
+  },
+  "haunted_mansion": {
+    "name": "Haunted Mansion",
+    "description": "Gothic mansion with dark corridors and mysterious atmosphere",
+    "prompt": "Gothic haunted mansion with dark wood paneling, flickering candles, ornate furniture, and eerie shadows",
+    "actions": ["w", "a", "w", "s", "d", "w"],
+    "action_speeds": [0.15, 0.1, 0.15, 0.1, 0.15, 0.15],
+    "cfg_scale": 2.3,
+    "inference_steps": 60,
+    "tags": ["gothic", "mansion", "haunted", "dark"]
+  },
+  "tropical_resort": {
+    "name": "Tropical Resort",
+    "description": "Luxury tropical resort with beaches and palm trees",
+    "prompt": "Luxury tropical resort with white sand beaches, crystal blue water, palm trees, and elegant beach villas",
+    "actions": ["w", "d", "s", "a", "w", "d"],
+    "action_speeds": [0.2, 0.25, 0.2, 0.25, 0.2, 0.25],
+    "cfg_scale": 2.0,
+    "inference_steps": 45,
+    "tags": ["tropical", "resort", "beach", "luxury"]
+  },
+  "alien_landscape": {
+    "name": "Alien Landscape",
+    "description": "Otherworldly alien planet with strange rock formations",
+    "prompt": "Alien landscape with bizarre rock formations, alien vegetation, multiple moons in the sky, and otherworldly atmosphere",
+    "actions": ["w", "a", "d", "s", "w", "a", "d"],
+    "action_speeds": [0.2, 0.2, 0.2, 0.15, 0.2, 0.2, 0.2],
+    "cfg_scale": 2.5,
+    "inference_steps": 65,
+    "tags": ["alien", "sci-fi", "landscape", "otherworldly"]
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "exploration_patterns": {
+    "basic_tour": {
+      "description": "Simple forward, back, left, right exploration",
+      "actions": ["w", "s", "d", "a"],
+      "action_speeds": [0.2, 0.2, 0.2, 0.2],
+      "duration_frames": 132
+    },
+    "detailed_exploration": {
+      "description": "Thorough exploration with varied speeds",
+      "actions": ["w", "w", "a", "w", "d", "s", "a", "d"],
+      "action_speeds": [0.2, 0.3, 0.15, 0.25, 0.25, 0.2, 0.15, 0.2],
+      "duration_frames": 264
+    },
+    "cinematic_tour": {
+      "description": "Smooth cinematic camera movements",
+      "actions": ["w", "a", "w", "d", "w", "s", "w"],
+      "action_speeds": [0.15, 0.1, 0.15, 0.1, 0.15, 0.1, 0.15],
+      "duration_frames": 231
+    },
+    "quick_survey": {
+      "description": "Fast overview of the environment",
+      "actions": ["w", "d", "s", "a"],
+      "action_speeds": [0.3, 0.3, 0.3, 0.3],
+      "duration_frames": 132
+    },
+    "spiral_exploration": {
+      "description": "Spiral pattern for comprehensive coverage",
+      "actions": ["w", "d", "w", "d", "w", "a", "w", "a"],
+      "action_speeds": [0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2],
+      "duration_frames": 264
+    }
+  },
+  "scene_specific": {
+    "interior_walkthrough": {
+      "description": "Suitable for indoor environments and buildings",
+      "actions": ["w", "a", "w", "d", "s", "d", "w"],
+      "action_speeds": [0.15, 0.1, 0.15, 0.1, 0.15, 0.1, 0.15],
+      "duration_frames": 231
+    },
+    "outdoor_landscape": {
+      "description": "Good for large outdoor environments",
+      "actions": ["w", "w", "d", "w", "a", "w", "s", "w"],
+      "action_speeds": [0.25, 0.3, 0.2, 0.25, 0.2, 0.25, 0.2, 0.25],
+      "duration_frames": 264
+    },
+    "aerial_flythrough": {
+      "description": "High-speed movements for aerial perspectives",
+      "actions": ["w", "w", "w", "d", "d", "a", "a"],
+      "action_speeds": [0.4, 0.4, 0.4, 0.3, 0.3, 0.3, 0.3],
+      "duration_frames": 231
+    },
+    "stealth_movement": {
+      "description": "Slow, careful movements for detailed observation",
+      "actions": ["w", "a", "w", "d", "w", "s", "w", "a"],
+      "action_speeds": [0.1, 0.05, 0.1, 0.05, 0.1, 0.05, 0.1, 0.05],
+      "duration_frames": 264
+    }
+  },
+  "gameplay_inspired": {
+    "fps_exploration": {
+      "description": "First-person shooter style movement",
+      "actions": ["w", "d", "w", "a", "s", "a", "w", "d"],
+      "action_speeds": [0.25, 0.2, 0.25, 0.2, 0.15, 0.2, 0.25, 0.2],
+      "duration_frames": 264
+    },
+    "adventure_game": {
+      "description": "Adventure game exploration pattern",
+      "actions": ["w", "w", "a", "s", "d", "w"],
+      "action_speeds": [0.2, 0.2, 0.15, 0.15, 0.15, 0.2],
+      "duration_frames": 198
+    },
+    "racing_camera": {
+      "description": "High-speed racing-style camera",
+      "actions": ["w", "w", "w", "d", "w", "w", "a"],
+      "action_speeds": [0.5, 0.5, 0.5, 0.3, 0.5, 0.5, 0.3],
+      "duration_frames": 231
+    },
+    "puzzle_investigation": {
+      "description": "Detailed investigation movements",
+      "actions": ["w", "a", "d", "s", "w", "d", "a", "s"],
+      "action_speeds": [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+      "duration_frames": 264
+    }
+  },
+  "artistic_movements": {
+    "dramatic_reveal": {
+      "description": "Cinematic reveal movements",
+      "actions": ["s", "s", "w", "w", "w"],
+      "action_speeds": [0.1, 0.15, 0.2, 0.25, 0.3],
+      "duration_frames": 165
+    },
+    "panoramic_sweep": {
+      "description": "Sweeping panoramic movements",
+      "actions": ["d", "d", "d", "d", "a", "a"],
+      "action_speeds": [0.15, 0.15, 0.15, 0.15, 0.15, 0.15],
+      "duration_frames": 198
+    },
+    "approaching_focus": {
+      "description": "Gradual approach to focal point",
+      "actions": ["w", "w", "w", "w", "w"],
+      "action_speeds": [0.1, 0.15, 0.2, 0.25, 0.3],
+      "duration_frames": 165
+    },
+    "circular_orbit": {
+      "description": "Orbital camera movement",
+      "actions": ["d", "w", "a", "s", "d", "w", "a", "s"],
+      "action_speeds": [0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2],
+      "duration_frames": 264
+    }
+  },
+  "custom_sequences": {
+    "user_defined_1": {
+      "description": "Custom sequence slot 1",
+      "actions": ["w", "s", "a", "d"],
+      "action_speeds": [0.2, 0.2, 0.2, 0.2],
+      "duration_frames": 132
+    },
+    "user_defined_2": {
+      "description": "Custom sequence slot 2", 
+      "actions": ["w", "s", "a", "d"],
+      "action_speeds": [0.2, 0.2, 0.2, 0.2],
+      "duration_frames": 132
+    }
+  }
+}
