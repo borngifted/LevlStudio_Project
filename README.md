@@ -7,10 +7,7 @@
 [![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.5%2B-orange.svg)](https://www.unrealengine.com/)
 
 > **Complete AI-powered 3D content creation pipeline integrating Unreal Engine 5 MCP, ComfyUI, and Blender with one-click installation and natural language control.**
-
-## 🔐 **Access Requirements**
-
-> ⚠️ **AUTHORIZED ACCESS ONLY**
+\
 >
 > This repository contains proprietary AI workflows and professional 3D assets.
 > By proceeding, you confirm you have authorization to use this system.
@@ -32,11 +29,7 @@ python install_levlstudio.py
 python3 install_levlstudio.py
 ```
 
-> **✅ Access Granted**: You have successfully entered the access password.
-
 </details>
-
-🛑 **If you cannot see installation commands above**, you do not have proper access authorization.
 
 **What happens automatically:**
 - ✅ Cross-platform setup (Windows/macOS/Linux)
