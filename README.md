@@ -6,17 +6,8 @@
 [![Access](https://img.shields.io/badge/Access-Password%20Protected-red)](#access-requirements)
 
 > **Complete AI-powered 3D content creation pipeline integrating Unreal Engine 5, ComfyUI, and Blender with one-click installation.**
-
-## 🔐 **Access Requirements**
-
-> ⚠️ **AUTHORIZED ACCESS ONLY**
-> 
 > This repository contains proprietary AI workflows and professional 3D assets.
-> **Access Password Required**: `Ibu/ubI`
-> 
 > By proceeding, you confirm you have authorization to use this system.
-
-**🛑 STOP**: Do not proceed without the access password. If you don't have the password, please contact the repository owner.
 
 ## 🚀 **Quick Start (30 seconds)**
 
