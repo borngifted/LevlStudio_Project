@@ -3,40 +3,23 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-blue)](#platform-support)
 [![Python](https://img.shields.io/badge/Python-3.10+-green)](#prerequisites)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](#license)
-[![Access](https://img.shields.io/badge/Access-Password%20Protected-red)](#access-requirements)
 [![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.5%2B-orange.svg)](https://www.unrealengine.com/)
 
 > **Complete AI-powered 3D content creation pipeline integrating Unreal Engine 5 MCP, ComfyUI, and Blender with one-click installation and natural language control.**
 
-## 🔐 **Access Requirements**
-
-> ⚠️ **AUTHORIZED ACCESS ONLY**
->
-> This repository contains proprietary AI workflows and professional 3D assets.
-> By proceeding, you confirm you have authorization to use this system.
-
 ## 🚀 **Quick Start (30 seconds)**
-
-<details>
-<summary>🔐 <strong>Click here and enter password: Ibu/ubI</strong></summary>
 
 ```bash
 # Clone the repository 
 git clone git@github.com:borngifted/LevlStudio_Project.git
 cd LevlStudio_Project
 
-# 🪟 Windows - Enter password when prompted
+# 🪟 Windows
 python install_levlstudio.py
 
-# 🍎 macOS/Linux - Enter password when prompted
+# 🍎 macOS/Linux
 python3 install_levlstudio.py
 ```
-
-> **✅ Access Granted**: You have successfully entered the access password.
-
-</details>
-
-🛑 **If you cannot see installation commands above**, you do not have proper access authorization.
 
 **What happens automatically:**
 - ✅ Cross-platform setup (Windows/macOS/Linux)
@@ -145,7 +128,7 @@ For detailed manual setup instructions, see: [**ONE_CLICK_SETUP.md**](ONE_CLICK_
 ### **Clone Repository Options**
 
 <details>
-<summary>🔐 <strong>Advanced Clone Methods (Password Required: Ibu/ubI)</strong></summary>
+<summary>🔧 <strong>Advanced Clone Methods</strong></summary>
 
 **🪟 Windows Users:**
 ```cmd
@@ -406,6 +389,35 @@ python3 unreal_comfyui_bridge.py --start-comfyui --watch
 # 3. Results in ComfyUI/output/ folder
 ```
 
+### **🎥 WAN Video Workflows**
+
+#### **WAN VACE (Reference-to-Video)**
+```bash
+# 🪟 Windows
+scripts\windows\launch_vace.bat
+
+# 🍎 macOS
+./scripts/macos/launch_vace.sh
+
+# Interactive launcher (both platforms)
+# 🪟 Windows: scripts\windows\interactive_launcher.bat
+# 🍎 macOS: ./scripts/macos/interactive_launcher.sh
+```
+
+#### **WAN I2V (Image-to-Video GGUF + LoRA)**
+```bash
+# 🪟 Windows
+scripts\windows\launch_i2v.bat
+
+# 🍎 macOS
+./scripts/macos/launch_i2v.sh
+
+# Manual execution with custom parameters
+python tools/levl_enqueue.py \
+  --workflow "ComfyUI/workflow_results/goshniiAI-WAN 2.2 Image-to-Video l GGUF + LoRA.json" \
+  --host 127.0.0.1 --port 8188
+```
+
 ### **AI → 3D Asset Generation**
 
 ```bash
@@ -451,7 +463,12 @@ LevlStudio_Project/
 ├── 🎨 ComfyUI Integration
 │   ├── ComfyUI/                  # Local ComfyUI installation
 │   ├── workflow_results/         # Ready-to-use workflows
-│   └── comfy_workflows/          # Additional workflows
+│   │   ├── wanvideo_1_3B_VACE_MDMZ.json           # Reference-to-Video
+│   │   ├── goshniiAI-WAN 2.2 Image-to-Video l GGUF + LoRA.json  # I2V GGUF
+│   │   └── LevlWorkFlow.json                       # Original workflow
+│   ├── comfy_workflows/          # Additional workflows
+│   └── tools/
+│       └── levl_enqueue.py       # Workflow automation tool
 ├── 🎭 Blender Pipeline
 │   ├── levlstudio_scene_builder_addon.py # Main addon
 │   ├── assets/                   # 3D asset library
@@ -461,10 +478,19 @@ LevlStudio_Project/
 │   ├── ai_to_3d_pipeline.py      # Text → 3D pipeline
 │   ├── ai_workflows/             # AI configurations
 │   └── ai_generated_assets/      # AI outputs
-├── 🔄 Automation
+├── 🔄 Automation & Scripts
 │   ├── auto_git_watcher.py       # Auto-commit system
 │   ├── batch_process.py          # Batch operations
-│   └── quick_start.py            # Project tester
+│   ├── quick_start.py            # Project tester
+│   └── scripts/                  # Cross-platform launchers
+│       ├── windows/              # Windows batch scripts
+│       │   ├── launch_vace.bat          # VACE workflow launcher
+│       │   ├── launch_i2v.bat           # I2V workflow launcher
+│       │   └── interactive_launcher.bat # Interactive menu
+│       └── macos/                # macOS shell scripts
+│           ├── launch_vace.sh           # VACE workflow launcher
+│           ├── launch_i2v.sh            # I2V workflow launcher
+│           └── interactive_launcher.sh  # Interactive menu
 └── 📖 Documentation
     ├── ONE_CLICK_SETUP.md        # Complete setup guide
     ├── COMPLETE_PROJECT_GUIDE.md # Full documentation
@@ -473,18 +499,32 @@ LevlStudio_Project/
 
 ## 🎨 **ComfyUI Workflow Features**
 
-### **Triple-ControlNet Pipeline**
+### **Triple-ControlNet Pipeline (LevlWorkFlow.json)**
 - **Depth Control (0.7)**: Structure preservation
 - **Pose Control (0.6)**: Character consistency  
 - **Canny Control (0.45)**: Edge preservation
 - **WAN-FUN Model**: Frame-to-frame consistency
 - **Fixed Seed**: Temporal stability
 
+### **WAN VACE (Reference-to-Video)**
+- **Model**: wanvideo_1_3b_vace.safetensors
+- **Input**: Video sequence + Reference image
+- **Output**: Enhanced video with reference style
+- **Features**: Temporal consistency, style transfer
+
+### **WAN I2V (Image-to-Video GGUF + LoRA)**
+- **Model**: wanvideo_2_2_i2v_gguf.gguf (Quantized)
+- **Enhancement**: LoRA for quality improvement
+- **Input**: Single image
+- **Output**: Animated video sequence
+- **Features**: Frame interpolation, smooth motion
+
 ### **Optimized Settings**
-- **22 Steps**: Quality/speed balance
+- **22-25 Steps**: Quality/speed balance
 - **CFG 5.5**: Optimal guidance
-- **Denoise 0.45**: Perfect img2img strength
-- **DPM++ 2M Karras**: Best scheduler
+- **Denoise 0.45-0.75**: Perfect img2img strength
+- **Euler/DPM++ 2M Karras**: Best schedulers
+- **Auto Model Selection**: GGUF quantization for efficiency
 
 ## 🔄 **Auto-Git System**
 
@@ -513,7 +553,7 @@ git commit -m "Your changes"
 ## 🚨 **Troubleshooting**
 
 <details>
-<summary>🔐 <strong>Access Support Documentation (Password: Ibu/ubI)</strong></summary>
+<summary>📚 <strong>Support Documentation</strong></summary>
 
 ### **Windows Issues**
 ```cmd
@@ -548,12 +588,12 @@ For detailed troubleshooting, see: [**ONE_CLICK_SETUP.md**](ONE_CLICK_SETUP.md#t
 ## 📖 **Documentation**
 
 <details>
-<summary>🔐 <strong>Access Technical Documentation (Password: Ibu/ubI)</strong></summary>
+<summary>📖 <strong>Technical Documentation</strong></summary>
 
 - **[ONE_CLICK_SETUP.md](ONE_CLICK_SETUP.md)** - Complete setup guide with platform-specific instructions
 - **[SETUP_INSTRUCTIONS.md](SETUP_INSTRUCTIONS.md)** - Quick start instructions  
 - **[COMPLETE_PROJECT_GUIDE.md](COMPLETE_PROJECT_GUIDE.md)** - Full technical documentation
-- **[REPOSITORY_ACCESS.md](REPOSITORY_ACCESS.md)** - Repository security and access control
+- **[REPOSITORY_ACCESS.md](REPOSITORY_ACCESS.md)** - Repository setup and configuration
 - **[ComfyUI/README.md](ComfyUI/README.md)** - ComfyUI integration documentation
 
 </details>
