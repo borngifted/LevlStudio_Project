@@ -11,8 +11,6 @@
 
 ## 🚀 **Quick Start (30 seconds)**
 
-⚠️ **ACCESS CHECKPOINT**: Enter password to reveal installation commands.
-
 <details>
 <summary>🔐 <strong>Click here and enter password: Ibu/ubI</strong></summary>
 
