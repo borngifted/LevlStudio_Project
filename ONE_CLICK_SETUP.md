@@ -1,10 +1,7 @@
 # 🚀 LevlStudio Complete Setup Guide
 
-> ⚠️ **AUTHORIZED ACCESS ONLY**  
-> **Access Password Required**: `Ibu/ubI`  
-> Professional 3D content creation system - Authorized users only.
-
-🛑 **CHECKPOINT**: You must have the access password to proceed with installation.
+> **Professional AI-powered 3D content creation system**  
+> Complete pipeline integrating Unreal Engine, ComfyUI, and Blender automation.
 
 ## **🔹 Step 1 — Install Core Prerequisites**
 

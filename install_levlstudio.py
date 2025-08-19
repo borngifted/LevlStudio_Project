@@ -60,30 +60,9 @@ class LevlStudioInstaller:
         print("📋 and professional 3D content creation tools.")
         print()
         
-        max_attempts = 3
-        for attempt in range(max_attempts):
-            try:
-                password = input("🔑 Enter access password: ").strip()
-                
-                if password == "Ibu/ubI":
-                    print("✅ Access authorized - proceeding with installation...")
-                    print()
-                    return True
-                else:
-                    remaining = max_attempts - attempt - 1
-                    if remaining > 0:
-                        print(f"❌ Invalid password. {remaining} attempts remaining.")
-                        print("💡 Hint: Check your authorization documentation.")
-                    else:
-                        print("❌ Access denied - too many failed attempts.")
-                        print("🚫 Installation terminated for security.")
-                        print("📞 Contact repository owner for proper access.")
-                        
-            except KeyboardInterrupt:
-                print("\n🚫 Installation cancelled by user.")
-                return False
-        
-        return False
+        print("✅ Initializing LevlStudio installation...")
+        print()
+        return True
     
     def check_prerequisites(self):
         """Check system prerequisites"""

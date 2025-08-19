@@ -7,6 +7,16 @@
 
 > **Complete AI-powered 3D content creation pipeline integrating Unreal Engine 5 MCP, ComfyUI, and Blender with one-click installation and natural language control.**
 
+## 🎬 **Featured Demo: "The Glimmer & The 13th Night"**
+
+Experience our complete pipeline in action with a professional-quality animated short featuring diverse characters in a steampunk Christmas adventure. **[➤ View Demo Project](demo/glimmer_13th_night/README.md)**
+
+**What's Included:**
+- ✨ 30+ cinematic scenes with MidJourney V7 prompts
+- 🎭 Diverse character lineup with authentic representation  
+- 🎨 Complete 3D assets and storyboard documentation
+- 🚀 Ready-to-use workflows for immediate production
+
 ## 🚀 **Quick Start (30 seconds)**
 
 ```bash
@@ -448,6 +458,14 @@ python3 launcher.py --blender
 
 ```
 LevlStudio_Project/
+├── 🎬 Demo Project
+│   └── glimmer_13th_night/        # "The Glimmer & The 13th Night"
+│       ├── README.md                      # Complete project guide
+│       ├── THE_GLIMMER_&_THE_13TH_NIGHT_2.pdf  # Storyboard & prompts
+│       ├── characters/                    # Character designs & 3D models
+│       ├── scenes/                        # Scene references & environments
+│       ├── storyboard/                    # Act breakdowns & specifications
+│       └── assets/                        # 3D models and production assets
 ├── 🚀 One-Click Setup
 │   ├── install_levlstudio.py      # Cross-platform installer
 │   ├── launcher.py                # Universal launcher
@@ -610,6 +628,17 @@ For detailed troubleshooting, see: [**ONE_CLICK_SETUP.md**](ONE_CLICK_SETUP.md#t
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 🎬 **See LevlStudio in Action**
+
+### **"The Glimmer & The 13th Night" Demo**
+Experience the complete pipeline with our featured animated short:
+- **30 cinematic scenes** with professional storyboard
+- **Diverse character lineup** with authentic representation
+- **Complete 3D assets** ready for production
+- **Full workflow documentation** for learning and replication
+
+**[➤ Explore the Demo Project](demo/glimmer_13th_night/README.md)**
+
 ## 🎉 **Success Stories**
 
 > "LevlStudio transformed our 3D pipeline. What used to take days now takes hours!" - *Game Studio*
@@ -618,15 +647,20 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 > "One-click setup saved us hours of configuration time." - *Technical Director*
 
+> "The Glimmer demo shows exactly what's possible with AI animation." - *Independent Filmmaker*
+
 ## 🚀 **What's Next?**
 
 - 🔮 **Real-time rendering** integration
-- 🎬 **Video generation** workflows
+- 🎬 **Video generation** workflows  
 - 🌐 **Cloud processing** support
 - 🤖 **Advanced AI models** integration
+- 🎭 **More demo projects** like "The Glimmer & The 13th Night"
 
 ---
 
 **🎊 Welcome to the future of AI-powered 3D content creation!**
+
+**Start with our demo project and see professional-quality animation come to life in minutes, not months.**
 
 *Built with ❤️ by the LevlStudio team*

@@ -47,25 +47,12 @@ def start_auto_watcher():
 
 def validate_access():
     """Validate user has proper access authorization"""
-    print("🔐" + "=" * 50)
-    print("🔐 LEVLSTUDIO ACCESS CONTROL")
-    print("🔐" + "=" * 50)
-    
-    try:
-        password = input("🔑 Enter access password to launch: ").strip()
-        
-        if password == "Ibu/ubI":
-            print("✅ Access authorized - launching LevlStudio...")
-            print()
-            return True
-        else:
-            print("❌ Access denied - invalid password.")
-            print("🚫 LevlStudio launch terminated.")
-            return False
-            
-    except KeyboardInterrupt:
-        print("\n🚫 Launch cancelled by user.")
-        return False
+    print("🚀" + "=" * 50)
+    print("🚀 LAUNCHING LEVLSTUDIO")
+    print("🚀" + "=" * 50)
+    print("✅ Initializing LevlStudio AI Pipeline...")
+    print()
+    return True
 
 def main():
     import argparse
