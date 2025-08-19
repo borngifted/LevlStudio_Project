@@ -15,6 +15,12 @@
         "/Volumes/Jul_23_2025/LevlStudio_Project/levl_mcp_server.py"
       ]
     },
+    "modelrouter": {
+      "command": "python",
+      "args": [
+        "/Volumes/Jul_23_2025/LevlStudio_Project/model_router_mcp_server.py"
+      ]
+    },
     "filesystem": {
       "command": "npx",
       "args": [

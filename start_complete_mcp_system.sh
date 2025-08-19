@@ -91,7 +91,34 @@ if [ -f "levl_mcp_server.py" ]; then
     echo "✅ LevlStudio MCP Server started (PID: $LEVL_MCP_PID)"
 fi
 
-# 5. Unreal Engine MCP Server
+# 4b. Model Router MCP Server
+echo "🧠 Starting Model Router MCP Server..."
+if [ -f "model_router_mcp_server.py" ]; then
+    python model_router_mcp_server.py > "$PROJECT_ROOT/logs/model_router_mcp.log" 2>&1 &
+    MODEL_ROUTER_MCP_PID=$!
+    sleep 3
+    echo "✅ Model Router MCP Server started (PID: $MODEL_ROUTER_MCP_PID)"
+fi
+
+# 5. Model Router Backend Service
+echo "🤖 Starting Model Router Backend Service..."
+if [ -d "model router" ]; then
+    cd "model router"
+    # Check if npm dependencies are installed
+    if [ ! -d "node_modules" ]; then
+        echo "Installing Model Router dependencies..."
+        npm install
+    fi
+    # Start the model router dashboard server
+    node dashboard-server.mjs > "$PROJECT_ROOT/logs/model_router.log" 2>&1 &
+    MODEL_ROUTER_PID=$!
+    cd "$PROJECT_ROOT"
+    sleep 3
+    echo "✅ Model Router Backend Service started (PID: $MODEL_ROUTER_PID)"
+    echo "   📊 Dashboard available at: http://localhost:3000"
+fi
+
+# 6. Unreal Engine MCP Server
 echo "🎮 Starting Unreal Engine MCP Server..."
 if [ -d "Python_UnrealMCP" ]; then
     cd Python_UnrealMCP
@@ -131,6 +158,21 @@ else
     echo "❌ LevlStudio MCP: Not running"
 fi
 
+if ps aux | grep "model_router_mcp_server.py" | grep -v grep > /dev/null; then
+    echo "✅ Model Router MCP: Running"
+else
+    echo "❌ Model Router MCP: Not running"
+fi
+
+if ps aux | grep "dashboard-server.mjs" | grep -v grep > /dev/null; then
+    echo "✅ Model Router: Running"
+    if curl -s http://localhost:3000 > /dev/null 2>&1; then
+        echo "   📊 Dashboard accessible at http://localhost:3000"
+    fi
+else
+    echo "❌ Model Router: Not running"
+fi
+
 if ps aux | grep "unreal_mcp_server_advanced.py" | grep -v grep > /dev/null; then
     echo "✅ Unreal MCP: Running"
 else
@@ -146,6 +188,8 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
     [ ! -z "$MCP_FS_PID" ] && echo "MCP_FS_PID=$MCP_FS_PID"
     [ ! -z "$BLENDER_PID" ] && echo "BLENDER_PID=$BLENDER_PID"
     [ ! -z "$LEVL_MCP_PID" ] && echo "LEVL_MCP_PID=$LEVL_MCP_PID"
+    [ ! -z "$MODEL_ROUTER_MCP_PID" ] && echo "MODEL_ROUTER_MCP_PID=$MODEL_ROUTER_MCP_PID"
+    [ ! -z "$MODEL_ROUTER_PID" ] && echo "MODEL_ROUTER_PID=$MODEL_ROUTER_PID"
     [ ! -z "$UNREAL_MCP_PID" ] && echo "UNREAL_MCP_PID=$UNREAL_MCP_PID"
 } > .complete_system_pids
 

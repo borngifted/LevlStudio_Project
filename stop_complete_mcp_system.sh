@@ -47,6 +47,16 @@ else
     done
 fi
 
+# Stop Model Router Backend Service
+if [ ! -z "$MODEL_ROUTER_PID" ]; then
+    safe_kill "$MODEL_ROUTER_PID" "Model Router Backend"
+else
+    ROUTER_PIDS=$(ps aux | grep "dashboard-server.mjs" | grep -v grep | awk '{print $2}')
+    for pid in $ROUTER_PIDS; do
+        safe_kill "$pid" "Model Router Backend"
+    done
+fi
+
 # Stop LevlStudio MCP Server
 if [ ! -z "$LEVL_MCP_PID" ]; then
     safe_kill "$LEVL_MCP_PID" "LevlStudio MCP Server"
@@ -54,6 +64,16 @@ else
     LEVL_PIDS=$(ps aux | grep "levl_mcp_server.py" | grep -v grep | awk '{print $2}')
     for pid in $LEVL_PIDS; do
         safe_kill "$pid" "LevlStudio MCP Server"
+    done
+fi
+
+# Stop Model Router MCP Server
+if [ ! -z "$MODEL_ROUTER_MCP_PID" ]; then
+    safe_kill "$MODEL_ROUTER_MCP_PID" "Model Router MCP Server"
+else
+    ROUTER_MCP_PIDS=$(ps aux | grep "model_router_mcp_server.py" | grep -v grep | awk '{print $2}')
+    for pid in $ROUTER_MCP_PIDS; do
+        safe_kill "$pid" "Model Router MCP Server"
     done
 fi
 
@@ -98,7 +118,7 @@ for pid in $PYTHON_PIDS; do
     fi
 done
 
-NODE_PIDS=$(ps aux | grep node | grep -E "(mcp-server)" | grep -v grep | awk '{print $2}')
+NODE_PIDS=$(ps aux | grep node | grep -E "(mcp-server|dashboard-server)" | grep -v grep | awk '{print $2}')
 for pid in $NODE_PIDS; do
     if kill -0 $pid 2>/dev/null; then
         echo "Cleaning up Node process (PID: $pid)"
