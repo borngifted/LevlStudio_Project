@@ -1,0 +1,399 @@
+{
+  "assets": {
+    "characters": {
+      "char_twos_aiesha": {
+        "type": "character",
+        "tags": ["twos", "protagonist", "science", "kenya", "water_systems"],
+        "description": "Aiesha - science lead and self-taught water-system tinkerer.",
+        "filepath": "//demo/world_of_steam/assets/characters/char_twos_aiesha/char_twos_aiesha_v001.glb",
+        "import_type": "import",
+        "location": [-3.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "char_twos_diana": {
+        "type": "character",
+        "tags": ["twos", "protagonist", "technology", "hacker", "repair"],
+        "description": "Diana - technology lead, device repair prodigy, and code problem-solver.",
+        "filepath": "//demo/world_of_steam/assets/characters/char_twos_diana/char_twos_diana_v001.glb",
+        "import_type": "import",
+        "location": [-2.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "char_twos_qawnzy": {
+        "type": "character",
+        "tags": ["twos", "protagonist", "engineering", "inventor", "hover_bike"],
+        "description": "Qawnzy - rebellious engineering lead with garage-built machines.",
+        "filepath": "//demo/world_of_steam/assets/characters/char_twos_qawnzy/char_twos_qawnzy_v001.glb",
+        "import_type": "import",
+        "location": [-1.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "char_twos_carlos": {
+        "type": "character",
+        "tags": ["twos", "protagonist", "arts", "music", "coder"],
+        "description": "Carlos - arts lead who blends guitar, code, and digital music.",
+        "filepath": "//demo/world_of_steam/assets/characters/char_twos_carlos/char_twos_carlos_v001.glb",
+        "import_type": "import",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "char_twos_pyra": {
+        "type": "character",
+        "tags": ["twos", "protagonist", "mathematics", "mandala", "geometry"],
+        "description": "Pyra - mathematics lead whose pattern logic stabilizes fractal systems.",
+        "filepath": "//demo/world_of_steam/assets/characters/char_twos_pyra/char_twos_pyra_v001.glb",
+        "import_type": "import",
+        "location": [1.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "char_twos_alex": {
+        "type": "character",
+        "tags": ["twos", "protagonist", "innovation", "unity", "robotics", "nonbinary"],
+        "description": "Alex - innovation and unity lead, robotics engineer, and systems thinker.",
+        "filepath": "//demo/world_of_steam/assets/characters/char_twos_alex/char_twos_alex_v001.glb",
+        "import_type": "import",
+        "location": [2.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "char_twos_aiko": {
+        "type": "character",
+        "tags": ["twos", "protagonist", "precision", "drone", "disaster_relief"],
+        "description": "Aiko - precision lead and autonomous drone designer.",
+        "filepath": "//demo/world_of_steam/assets/characters/char_twos_aiko/char_twos_aiko_v001.glb",
+        "import_type": "import",
+        "location": [3.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "char_twos_tessa_falk": {
+        "type": "character",
+        "tags": ["twos", "scientist", "11g", "prologue", "summit"],
+        "description": "Dr. Tessa Falk - lead scientist at the 11G launch summit.",
+        "filepath": "//demo/world_of_steam/assets/characters/char_twos_tessa_falk/char_twos_tessa_falk_v001.glb",
+        "import_type": "import",
+        "location": [0.0, 2.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.05, 1.05, 1.05]
+      },
+      "char_twos_ai_endpoint": {
+        "type": "character",
+        "tags": ["twos", "ai", "guide", "transmission", "hologram"],
+        "description": "AI Endpoint - flickering guide and hacked-transmission narrator.",
+        "filepath": "//demo/world_of_steam/assets/characters/char_twos_ai_endpoint/char_twos_ai_endpoint_v001.glb",
+        "import_type": "import",
+        "location": [0.0, 3.0, 1.5],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.2, 1.2, 1.2]
+      },
+      "char_twos_deduca": {
+        "type": "character",
+        "tags": ["twos", "antagonist", "deduca", "steam_palace", "logic"],
+        "description": "Deduca - calm calculating authority who initiates the First Trial.",
+        "filepath": "//demo/world_of_steam/assets/characters/char_twos_deduca/char_twos_deduca_v001.glb",
+        "import_type": "import",
+        "location": [0.0, 6.0, 0.0],
+        "rotation": [0.0, 0.0, 3.14159],
+        "scale": [1.15, 1.15, 1.15]
+      }
+    },
+    "props": {
+      "twos_prop_holographic_earth": {
+        "type": "prop",
+        "tags": ["twos", "hologram", "earth", "11g", "summit"],
+        "description": "Glowing holographic Earth used for the 11G launch and collapse.",
+        "filepath": "//demo/world_of_steam/assets/props/twos_prop_holographic_earth/twos_prop_holographic_earth_v001.glb",
+        "import_type": "import",
+        "location": [0.0, 0.0, 2.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [2.0, 2.0, 2.0]
+      },
+      "twos_prop_diana_laptop": {
+        "type": "prop",
+        "tags": ["twos", "technology", "laptop", "code", "glitch"],
+        "description": "Diana's repaired laptop/tablet rig with dissolving code states.",
+        "filepath": "//demo/world_of_steam/assets/props/twos_prop_diana_laptop/twos_prop_diana_laptop_v001.glb",
+        "import_type": "import",
+        "location": [-2.0, -0.4, 0.9],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [0.6, 0.6, 0.6]
+      },
+      "twos_prop_aiko_drone": {
+        "type": "prop",
+        "tags": ["twos", "precision", "drone", "autonomous", "malfunction"],
+        "description": "Aiko's disaster-relief drone that rejects commands in the First Trial.",
+        "filepath": "//demo/world_of_steam/assets/props/twos_prop_aiko_drone/twos_prop_aiko_drone_v001.glb",
+        "import_type": "import",
+        "location": [3.2, -0.5, 1.4],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [0.5, 0.5, 0.5]
+      },
+      "twos_prop_carlos_guitar": {
+        "type": "prop",
+        "tags": ["twos", "arts", "guitar", "music", "sound"],
+        "description": "Carlos's guitar with embedded circuit and sound-fragment visual states.",
+        "filepath": "//demo/world_of_steam/assets/props/twos_prop_carlos_guitar/twos_prop_carlos_guitar_v001.glb",
+        "import_type": "import",
+        "location": [0.1, -0.3, 0.9],
+        "rotation": [0.0, 0.0, 0.25],
+        "scale": [0.9, 0.9, 0.9]
+      },
+      "twos_prop_alex_blueprints": {
+        "type": "prop",
+        "tags": ["twos", "innovation", "blueprints", "robotics", "unity"],
+        "description": "Alex's invention blueprints and fold-out systems diagrams.",
+        "filepath": "//demo/world_of_steam/assets/props/twos_prop_alex_blueprints/twos_prop_alex_blueprints_v001.glb",
+        "import_type": "import",
+        "location": [2.1, -0.4, 1.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [0.7, 0.7, 0.7]
+      }
+    },
+    "environments": {
+      "twos_env_11g_city_network": {
+        "type": "environment",
+        "tags": ["twos", "11g", "city", "broadcast", "vortex"],
+        "description": "Global city network with gold 11G light beams and public broadcast screens.",
+        "filepath": "//demo/world_of_steam/assets/environments/twos_env_11g_city_network/twos_env_11g_city_network_v001.glb",
+        "import_type": "link_or_import",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0],
+        "lighting_preset": "twos_lighting_11g_gold"
+      },
+      "twos_env_science_summit": {
+        "type": "environment",
+        "tags": ["twos", "summit", "auditorium", "science", "prologue"],
+        "description": "Sleek 11G launch auditorium with central holographic Earth stage.",
+        "filepath": "//demo/world_of_steam/assets/environments/twos_env_science_summit/twos_env_science_summit_v001.glb",
+        "import_type": "link_or_import",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0],
+        "lighting_preset": "twos_lighting_summit_failure"
+      },
+      "twos_env_summoning_portal": {
+        "type": "environment",
+        "tags": ["twos", "summoning", "portal", "transition", "earth"],
+        "description": "Multi-location portal transition environment for the teens' selection and disappearance.",
+        "filepath": "//demo/world_of_steam/assets/environments/twos_env_summoning_portal/twos_env_summoning_portal_v001.glb",
+        "import_type": "link_or_import",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0],
+        "lighting_preset": "twos_lighting_reality_shift"
+      },
+      "twos_env_mechanical_landscape": {
+        "type": "environment",
+        "tags": ["twos", "world_of_steam", "mechanical", "fractal", "arrival"],
+        "description": "Living mechanical landscape with gears, code streams, and geometric architecture.",
+        "filepath": "//demo/world_of_steam/assets/environments/twos_env_mechanical_landscape/twos_env_mechanical_landscape_v001.glb",
+        "import_type": "link_or_import",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0],
+        "lighting_preset": "twos_lighting_steam_world"
+      },
+      "twos_env_first_trial_arena": {
+        "type": "environment",
+        "tags": ["twos", "first_trial", "arena", "fractal_collapse", "obstacle_course"],
+        "description": "Reactive First Trial arena with rising terrain and discipline-specific challenge zones.",
+        "filepath": "//demo/world_of_steam/assets/environments/twos_env_first_trial_arena/twos_env_first_trial_arena_v001.glb",
+        "import_type": "link_or_import",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0],
+        "lighting_preset": "twos_lighting_fractal_trial"
+      },
+      "twos_env_steam_palace": {
+        "type": "environment",
+        "tags": ["twos", "steam_palace", "propaganda", "logic", "authority"],
+        "description": "Cold brass-and-black STEAM Palace space for propaganda and Deduca's surveillance.",
+        "filepath": "//demo/world_of_steam/assets/environments/twos_env_steam_palace/twos_env_steam_palace_v001.glb",
+        "import_type": "link_or_import",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0],
+        "lighting_preset": "twos_lighting_steam_palace"
+      }
+    },
+    "fx": {
+      "twos_fx_11g_vortex": {
+        "type": "fx",
+        "tags": ["twos", "11g", "vortex", "gold", "sky"],
+        "description": "Golden 11G energy vortex and worldwide beam convergence.",
+        "filepath": "//demo/world_of_steam/assets/fx/twos_fx_11g_vortex/twos_fx_11g_vortex_v001.blend",
+        "import_type": "append",
+        "location": [0.0, 0.0, 10.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [12.0, 12.0, 12.0]
+      },
+      "twos_fx_reality_shift_energy": {
+        "type": "fx",
+        "tags": ["twos", "summoning", "energy", "selection", "transition"],
+        "description": "Reality-shift beams, object dissolution, and portal pull effects.",
+        "filepath": "//demo/world_of_steam/assets/fx/twos_fx_reality_shift_energy/twos_fx_reality_shift_energy_v001.blend",
+        "import_type": "append",
+        "location": [0.0, 0.0, 2.5],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [6.0, 6.0, 6.0]
+      },
+      "twos_fx_static_transmission": {
+        "type": "fx",
+        "tags": ["twos", "endpoint", "static", "broadcast", "glitch"],
+        "description": "Static, scanlines, frame tearing, and hacked transmission overlays.",
+        "filepath": "//demo/world_of_steam/assets/fx/twos_fx_static_transmission/twos_fx_static_transmission_v001.blend",
+        "import_type": "append",
+        "location": [0.0, -2.0, 2.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [4.0, 4.0, 4.0]
+      },
+      "twos_fx_fractal_ground": {
+        "type": "fx",
+        "tags": ["twos", "fractal", "ground", "trial", "math"],
+        "description": "Glowing fractal ground splits, equation lines, and recursive collapse states.",
+        "filepath": "//demo/world_of_steam/assets/fx/twos_fx_fractal_ground/twos_fx_fractal_ground_v001.blend",
+        "import_type": "append",
+        "location": [0.0, 0.0, 0.02],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [10.0, 10.0, 1.0]
+      }
+    },
+    "materials": {
+      "twos_mat_brass_industrial": {
+        "type": "material",
+        "tags": ["twos", "brass", "industrial", "steampunk"],
+        "description": "Aged brass material preset for World of STEAM machinery.",
+        "filepath": "//demo/world_of_steam/assets/materials/twos_mat_brass_industrial/twos_mat_brass_industrial_v001.blend",
+        "import_type": "append",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0],
+        "node_group": "NG_twos_mat_brass_industrial"
+      },
+      "twos_mat_blue_hologram": {
+        "type": "material",
+        "tags": ["twos", "blue", "hologram", "endpoint", "ui"],
+        "description": "Transparent blue hologram material for Endpoint and educational interfaces.",
+        "filepath": "//demo/world_of_steam/assets/materials/twos_mat_blue_hologram/twos_mat_blue_hologram_v001.blend",
+        "import_type": "append",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0],
+        "node_group": "NG_twos_mat_blue_hologram"
+      },
+      "twos_mat_gold_11g": {
+        "type": "material",
+        "tags": ["twos", "gold", "11g", "energy", "broadcast"],
+        "description": "Radiant gold 11G energy material for beams, web lines, and vortexes.",
+        "filepath": "//demo/world_of_steam/assets/materials/twos_mat_gold_11g/twos_mat_gold_11g_v001.blend",
+        "import_type": "append",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0],
+        "node_group": "NG_twos_mat_gold_11g"
+      },
+      "twos_mat_fractal_glow": {
+        "type": "material",
+        "tags": ["twos", "fractal", "trial", "glow", "math"],
+        "description": "Cyan-violet glowing material for fractal platforms and recursive equations.",
+        "filepath": "//demo/world_of_steam/assets/materials/twos_mat_fractal_glow/twos_mat_fractal_glow_v001.blend",
+        "import_type": "append",
+        "location": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0],
+        "node_group": "NG_twos_mat_fractal_glow"
+      }
+    },
+    "cameras": {
+      "twos_cam_broadcast_sweep": {
+        "type": "camera",
+        "tags": ["twos", "broadcast", "commercial", "smooth", "wide"],
+        "description": "Smooth broadcast camera rig for 11G commercial and propaganda inserts.",
+        "filepath": "//demo/world_of_steam/assets/cameras/twos_cam_broadcast_sweep/twos_cam_broadcast_sweep_v001.blend",
+        "import_type": "link",
+        "location": [0.0, -12.0, 6.0],
+        "rotation": [1.05, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "twos_cam_portal_pull": {
+        "type": "camera",
+        "tags": ["twos", "portal", "selection", "kinetic", "summoning"],
+        "description": "Kinetic upward pull camera rig for selection and summoning transitions.",
+        "filepath": "//demo/world_of_steam/assets/cameras/twos_cam_portal_pull/twos_cam_portal_pull_v001.blend",
+        "import_type": "link",
+        "location": [0.0, -8.0, 4.0],
+        "rotation": [1.1, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0]
+      },
+      "twos_cam_trial_crane": {
+        "type": "camera",
+        "tags": ["twos", "trial", "crane", "arena", "reveal"],
+        "description": "Crane and overhead reveal camera rig for the First Trial arena.",
+        "filepath": "//demo/world_of_steam/assets/cameras/twos_cam_trial_crane/twos_cam_trial_crane_v001.blend",
+        "import_type": "link",
+        "location": [0.0, -16.0, 10.0],
+        "rotation": [1.15, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0]
+      }
+    }
+  },
+  "lighting_presets": {
+    "twos_lighting_11g_gold": {
+      "sun_energy": 0.35,
+      "sun_color": [1.0, 0.82, 0.42],
+      "ambient_color": [0.05, 0.07, 0.12],
+      "fog_density": 0.025
+    },
+    "twos_lighting_summit_failure": {
+      "sun_energy": 0.1,
+      "sun_color": [0.8, 0.9, 1.0],
+      "ambient_color": [0.02, 0.03, 0.05],
+      "fog_density": 0.015
+    },
+    "twos_lighting_reality_shift": {
+      "sun_energy": 0.45,
+      "sun_color": [1.0, 0.75, 0.35],
+      "ambient_color": [0.12, 0.08, 0.18],
+      "fog_density": 0.05
+    },
+    "twos_lighting_steam_world": {
+      "sun_energy": 0.7,
+      "sun_color": [0.75, 0.9, 1.0],
+      "ambient_color": [0.08, 0.12, 0.16],
+      "fog_density": 0.035
+    },
+    "twos_lighting_fractal_trial": {
+      "sun_energy": 0.6,
+      "sun_color": [0.65, 0.85, 1.0],
+      "ambient_color": [0.12, 0.07, 0.18],
+      "fog_density": 0.04
+    },
+    "twos_lighting_steam_palace": {
+      "sun_energy": 0.25,
+      "sun_color": [0.8, 0.72, 0.52],
+      "ambient_color": [0.03, 0.04, 0.04],
+      "fog_density": 0.02
+    }
+  },
+  "character_groups": {
+    "protagonists": [
+      "char_twos_aiesha",
+      "char_twos_diana",
+      "char_twos_qawnzy",
+      "char_twos_carlos",
+      "char_twos_pyra",
+      "char_twos_alex",
+      "char_twos_aiko"
+    ],
+    "guides": ["char_twos_ai_endpoint"],
+    "origin_figures": ["char_twos_tessa_falk"],
+    "antagonists": ["char_twos_deduca"],
+    "continuity_unresolved": ["eighth_chosen_slot"]
+  }
+}
